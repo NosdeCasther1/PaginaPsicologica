@@ -7,13 +7,11 @@ import WhatsAppFloat from '@/components/layout/WhatsAppFloat';
 
 const inter = Inter({
     subsets: ['latin'],
-    variable: '--font-inter',
     display: 'swap',
 });
 
 const playfair = Playfair_Display({
     subsets: ['latin'],
-    variable: '--font-playfair',
     display: 'swap',
 });
 
@@ -23,6 +21,8 @@ export const metadata: Metadata = {
     keywords: ['terapia online', 'psicología', 'salud mental', 'Guatemala', 'terapia breve', 'humanista'],
 };
 
+import ChatWidget from '@/components/chat/ChatWidget';
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -30,11 +30,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="es" className="scroll-smooth">
-            <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+            <body className={inter.className} suppressHydrationWarning>
                 <Navbar />
                 <main>{children}</main>
                 <Footer />
                 <WhatsAppFloat />
+                <ChatWidget />
             </body>
         </html>
     );

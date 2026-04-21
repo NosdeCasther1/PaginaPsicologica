@@ -51,3 +51,11 @@ export interface Stat {
     number: string;
     label: string;
 }
+
+export interface Charla {
+    id: string;
+    titulo: string;
+    fecha: string;
+    descripcion_corta: string;
+    imageUrl: string;
+}

@@ -1,12 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Button from '../ui/Button';
 import { stats } from '@/lib/data';
 import { ArrowRight, MessageCircle } from 'lucide-react';
+import BookingModal from '../ui/BookingModal';
+
 
 export default function HeroSection() {
+    const [isBookingOpen, setIsBookingOpen] = useState(false);
+    const calendarUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AQUI_VA_EL_ID_REAL";
+
     return (
         <section id="inicio" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
             {/* Background Gradient Orbs */}
@@ -36,7 +41,7 @@ export default function HeroSection() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Button size="lg" onClick={() => window.open('https://calendar.google.com', '_blank')}>
+                            <Button size="lg" onClick={() => setIsBookingOpen(true)}>
                                 Reservar mi sesión online
                                 <ArrowRight className="w-5 h-5" />
                             </Button>
@@ -94,6 +99,14 @@ export default function HeroSection() {
                     </div>
                 </div>
             </div>
+
+            {/* Google Calendar Modal */}
+            <BookingModal 
+                isOpen={isBookingOpen} 
+                onClose={() => setIsBookingOpen(false)} 
+                calendarUrl={calendarUrl}
+            />
         </section>
     );
 }
+

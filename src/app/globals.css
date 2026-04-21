@@ -6,9 +6,6 @@
     --color-sage-green: #A8C5B5;
     --color-warm-beige: #F5F1ED;
 
-    --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-family-serif: 'Playfair Display', Georgia, serif;
-
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
 }
@@ -16,15 +13,6 @@
 body {
     background-color: white;
     color: #111827;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-playfair), Georgia, serif;
 }
 
 svg {

@@ -1,27 +1,23 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useActionState, useEffect, useRef } from 'react';
 import Input from '../ui/Input';
 import Textarea from '../ui/Textarea';
 import Button from '../ui/Button';
 import { contactInfo } from '@/lib/data';
-import type { ContactFormData } from '@/types';
+import { sendContactEmail, ContactState } from '@/app/actions/contact';
+
+const initialState: ContactState = {};
 
 export default function ContactSection() {
-    const [formData, setFormData] = useState<ContactFormData>({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-    });
+    const [state, formAction, isPending] = useActionState(sendContactEmail, initialState);
+    const formRef = useRef<HTMLFormElement>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    };
+    useEffect(() => {
+        if (state.success && formRef.current) {
+            formRef.current.reset();
+        }
+    }, [state.success]);
 
     return (
         <section id="contacto" className="py-20 bg-gray-50">
@@ -103,31 +99,28 @@ export default function ContactSection() {
 
                     {/* Contact Form */}
                     <div className="bg-white rounded-2xl p-8 shadow-md">
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form ref={formRef} action={formAction} className="space-y-6">
                             <Input
                                 label="Nombre completo"
                                 type="text"
+                                name="name"
                                 placeholder="Tu nombre"
-                                value={formData.name}
-                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 required
                             />
 
                             <Input
                                 label="Correo electrónico"
                                 type="email"
+                                name="email"
                                 placeholder="tu@email.com"
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 required
                             />
 
                             <Input
                                 label="Teléfono"
                                 type="tel"
+                                name="phone"
                                 placeholder="+502 1234 5678"
-                                value={formData.phone}
-                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             />
 
                             <div>
@@ -135,9 +128,9 @@ export default function ContactSection() {
                                     Servicio de interés
                                 </label>
                                 <select
-                                    value={formData.service}
-                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                                    name="service"
                                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all duration-200"
+                                    suppressHydrationWarning
                                 >
                                     <option value="">Selecciona un servicio</option>
                                     <option value="individual">Terapia Individual</option>
@@ -151,18 +144,41 @@ export default function ContactSection() {
 
                             <Textarea
                                 label="Mensaje"
+                                name="message"
                                 rows={4}
                                 placeholder="Cuéntanos brevemente cómo podemos ayudarte..."
-                                value={formData.message}
-                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                 required
                             />
 
-                            <Button type="submit" size="lg" className="w-full">
-                                Enviar Mensaje
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
+                            {state.error && (
+                                <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
+                                    {state.error}
+                                </div>
+                            )}
+
+                            {state.success && (
+                                <div className="p-4 bg-green-50 text-green-600 rounded-xl text-sm font-medium border border-green-100">
+                                    {state.success}
+                                </div>
+                            )}
+
+                            <Button type="submit" size="lg" className="w-full" disabled={isPending}>
+                                {isPending ? (
+                                    <>
+                                        Enviando...
+                                        <svg className="animate-spin h-5 w-5 ml-2" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                        </svg>
+                                    </>
+                                ) : (
+                                    <>
+                                        Enviar Mensaje
+                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </>
+                                )}
                             </Button>
                         </form>
                     </div>

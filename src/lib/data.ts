@@ -1,4 +1,4 @@
-import { Service, Benefit, Philosophy, FAQ, Resource, Stat } from '@/types';
+import { Service, Benefit, Philosophy, FAQ, Resource, Stat, Charla } from '@/types';
 
 // Hero Stats
 export const stats: Stat[] = [
@@ -204,3 +204,27 @@ export const contactInfo = {
         linkedin: '#',
     },
 };
+
+export const charlasData: Charla[] = [
+    {
+        id: '1',
+        titulo: 'Manejo del Estrés en Tiempos de Cambio',
+        fecha: '15 de Mayo, 2024',
+        descripcion_corta: 'Una charla enfocada en herramientas prácticas para gestionar la incertidumbre y el estrés laboral.',
+        imageUrl: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+        id: '2',
+        titulo: 'Crianza Positiva y Límites',
+        fecha: '22 de Junio, 2024',
+        descripcion_corta: 'Espacio para padres sobre cómo establecer límites desde el amor y la comprensión.',
+        imageUrl: 'https://images.unsplash.com/photo-1536604498063-5873d01dfb2d?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+        id: '3',
+        titulo: 'Mindfulness para la Vida Diaria',
+        fecha: '10 de Julio, 2024',
+        descripcion_corta: 'Taller teórico-práctico sobre la atención plena y su impacto en la salud mental.',
+        imageUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800',
+    },
+];

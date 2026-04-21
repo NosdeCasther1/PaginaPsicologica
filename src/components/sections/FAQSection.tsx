@@ -31,6 +31,7 @@ export default function FAQSection() {
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                                suppressHydrationWarning
                             >
                                 <span className="font-semibold text-gray-900 pr-8">{faq.question}</span>
                                 <svg
