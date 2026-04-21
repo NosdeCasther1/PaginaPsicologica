@@ -7,7 +7,8 @@
     "optimize-images": "node scripts/optimize-images.mjs",
     "build": "npm run optimize-images && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:seo": "node scripts/seo-agent.mjs"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.64",
