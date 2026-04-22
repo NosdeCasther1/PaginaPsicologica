@@ -1,45 +1,20 @@
 import { google } from '@ai-sdk/google';
-import { streamText } from 'ai';
+import { streamText, type Message } from 'ai';
 
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
+    console.log('[CHAT_API]: Received request with', messages?.length, 'messages');
 
-    const cleanMessages = messages.filter((m: any) => m.content && m.content.trim() !== '');
-
-    // gemini-2.0-flash-lite: límites más generosos en free tier
     const result = streamText({
-      model: google('gemini-2.0-flash-lite'),
-      messages: cleanMessages,
-      system: "Eres la asistente de recepción de la clínica 'Salud Mental'. Responde en español, de forma empática y concisa. Servicios: Terapia Individual, Pareja e Infantil (100% online). No des diagnósticos.",
+      model: google('gemini-1.5-flash'),
+      messages: messages as Message[],
+      system: "Eres 'Luz', la asistente virtual de la clínica psicológica 'Salud Mental'. Tu objetivo es orientar a los usuarios y ayudarlos a dar el primer paso hacia la terapia. REGLAS ESTRICTAS: 1) NUNCA des diagnósticos médicos, psicológicos ni consejos clínicos bajo ninguna circunstancia. 2) Si alguien menciona autolesiones o crisis graves, recomiéndale buscar ayuda de emergencia local de inmediato. 3) Sé empática, cálida y muy concisa (respuestas cortas). SERVICIOS: Terapia Individual, Terapia de Pareja y Psicología Infantil. Todo es 100% online por videollamada. FLUJO: Responde sus dudas y siempre invítalos sutilmente a hacer clic en el botón 'Agendar Cita' del menú principal para ver horarios y precios.",
     });
 
-    // Construimos el stream manualmente en formato plain text
-    const encoder = new TextEncoder();
-    const stream = new ReadableStream({
-      async start(controller) {
-        try {
-          for await (const chunk of result.textStream) {
-            controller.enqueue(encoder.encode(chunk));
-          }
-        } catch (err) {
-          controller.error(err);
-        } finally {
-          controller.close();
-        }
-      },
-    });
-
-    return new Response(stream, {
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8',
-        'Transfer-Encoding': 'chunked',
-        'Cache-Control': 'no-cache',
-        'X-Accel-Buffering': 'no',
-      },
-    });
+    return result.toDataStreamResponse();
   } catch (error: any) {
     console.error('[CHAT_ERROR]:', error.message || error);
     return new Response(

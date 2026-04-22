@@ -1,21 +1,17 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, User, Bot, Minus } from 'lucide-react';
-
-// Tipos
-interface Message {
-  id: string;
-  role: 'user' | 'assistant';
-  content: string;
-}
+import { useChat } from '@ai-sdk/react';
 
 export default function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isMinimized, setIsMinimized] = React.useState(false);
+  
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    api: '/api/chat',
+  });
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,113 +21,6 @@ export default function ChatWidget() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isLoading]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmed = input.trim();
-    if (!trimmed || isLoading) return;
-
-    // Agregar mensaje del usuario
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      content: trimmed,
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
-
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: [...messages, userMessage].map(m => ({
-            role: m.role,
-            content: m.content,
-          })),
-        }),
-      });
-
-      if (!res.ok) throw new Error('Error en la respuesta del servidor');
-
-      // Leer el stream de texto
-      const reader = res.body?.getReader();
-      const decoder = new TextDecoder();
-      let assistantContent = '';
-
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: '',
-      };
-      setMessages(prev => [...prev, assistantMessage]);
-
-      if (reader) {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            const chunk = decoder.decode(value, { stream: true });
-
-            // createTextStreamResponse devuelve texto plano directo
-            // Pero intentamos parsear el formato data-stream (0:"...") por compatibilidad
-            const lines = chunk.split('\n');
-            let hasDataStream = false;
-
-            for (const line of lines) {
-              if (line.startsWith('0:')) {
-                hasDataStream = true;
-                try {
-                  const text = JSON.parse(line.slice(2));
-                  assistantContent += text;
-                } catch {
-                  // ignorar líneas no parseables
-                }
-              }
-            }
-
-            // Si no hay formato data-stream, es texto plano directo
-            if (!hasDataStream && chunk.trim()) {
-              assistantContent += chunk;
-            }
-
-            setMessages(prev =>
-              prev.map(m =>
-                m.id === assistantMessage.id
-                  ? { ...m, content: assistantContent }
-                  : m
-              )
-            );
-          }
-        }
-
-        // Si el stream terminó vacío (ej: rate limit o error silencioso), mostrar error
-        if (!assistantContent.trim()) {
-          setMessages(prev =>
-            prev.map(m =>
-              m.id === assistantMessage.id
-                ? { ...m, content: 'Lo siento, no pude procesar tu mensaje en este momento. Por favor intenta nuevamente en unos segundos.' }
-                : m
-            )
-          );
-        }
-    } catch (error) {
-      console.error('[Chat Error]:', error);
-      setMessages(prev => [
-        ...prev,
-        {
-          id: (Date.now() + 2).toString(),
-          role: 'assistant',
-          content: 'Lo siento, hubo un error al procesar tu mensaje. Intenta nuevamente.',
-        },
-      ]);
-    } finally {
-      setIsLoading(false);
-      inputRef.current?.focus();
-    }
-  };
 
   const cn = (...classes: (string | boolean | undefined)[]) =>
     classes.filter(Boolean).join(' ');
@@ -186,7 +75,7 @@ export default function ChatWidget() {
                       <MessageCircle className="text-blue-600" size={24} />
                     </div>
                     <p className="text-neutral-500 text-sm">
-                      ¡Hola! Soy tu asistente de recepción. ¿En qué puedo ayudarte hoy?
+                      ¡Hola! Soy 'Luz', tu asistente de recepción. ¿En qué puedo ayudarte hoy?
                     </p>
                   </div>
                 )}
@@ -217,7 +106,7 @@ export default function ChatWidget() {
                           : "bg-white text-neutral-800 border border-neutral-100 rounded-tl-none"
                       )}
                     >
-                      {m.content || (m.role === 'assistant' && isLoading ? '...' : m.content)}
+                      {m.content}
                     </div>
                   </div>
                 ))}
@@ -239,29 +128,22 @@ export default function ChatWidget() {
               </div>
 
               {/* Input Area */}
-              <form
-                onSubmit={handleSubmit}
-                className="p-4 border-t border-neutral-100 bg-white"
-              >
-                <div className="relative flex items-center">
-                  <input
-                    ref={inputRef}
-                    value={input}
-                    onChange={e => setInput(e.target.value)}
-                    placeholder="Escribe un mensaje..."
-                    disabled={isLoading}
-                    className="w-full pl-4 pr-12 py-3 bg-neutral-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 transition-all border-none disabled:opacity-60"
-                  />
-                  <button
-                    type="submit"
-                    disabled={!input.trim() || isLoading}
-                    className="absolute right-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md"
-                  >
-                    {isLoading
-                      ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      : <Send size={16} />}
-                  </button>
-                </div>
+              <form onSubmit={handleSubmit} className="flex gap-2 p-4 border-t border-neutral-100 bg-white">
+                <input
+                  name="prompt"
+                  type="text"
+                  value={input}
+                  onChange={handleInputChange}
+                  placeholder="Escribe un mensaje..."
+                  className="flex-1 px-4 py-3 bg-neutral-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 transition-all border-none disabled:opacity-60"
+                />
+                <button 
+                  type="submit" 
+                  disabled={!input || input.trim().length === 0}
+                  className="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm flex items-center justify-center"
+                >
+                  <Send className="w-5 h-5" />
+                </button>
               </form>
             </>
           )}
