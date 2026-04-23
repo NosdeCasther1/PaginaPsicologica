@@ -1,25 +1,28 @@
 import { google } from '@ai-sdk/google';
-import { streamText, type Message } from 'ai';
-
-export const maxDuration = 30;
+import { streamText } from 'ai';
 
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
-    console.log('[CHAT_API]: Received request with', messages?.length, 'messages');
+
+    // TRADUCTOR: Convierte el formato V6 del cliente al formato CoreMessage del servidor
+    const safeMessages = messages.map((msg: any) => ({
+      role: msg.role,
+      content: msg.content || (msg.parts && msg.parts.length > 0 ? msg.parts[0].text : '') || ''
+    }));
 
     const result = streamText({
-      model: google('gemini-1.5-flash'),
-      messages: messages as Message[],
-      system: "Eres 'Luz', la asistente virtual de la clínica psicológica 'Salud Mental'. Tu objetivo es orientar a los usuarios y ayudarlos a dar el primer paso hacia la terapia. REGLAS ESTRICTAS: 1) NUNCA des diagnósticos médicos, psicológicos ni consejos clínicos bajo ninguna circunstancia. 2) Si alguien menciona autolesiones o crisis graves, recomiéndale buscar ayuda de emergencia local de inmediato. 3) Sé empática, cálida y muy concisa (respuestas cortas). SERVICIOS: Terapia Individual, Terapia de Pareja y Psicología Infantil. Todo es 100% online por videollamada. FLUJO: Responde sus dudas y siempre invítalos sutilmente a hacer clic en el botón 'Agendar Cita' del menú principal para ver horarios y precios.",
+      model: google('gemini-2.0-flash-lite'),
+      messages: safeMessages,
+      system: "Eres 'Luz', asistente de recepción de la clínica 'Salud Mental'. Eres cálida, empática y concisa. Servicios: Terapia Individual, Pareja e Infantil (100% online). NO des diagnósticos médicos.",
     });
 
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
   } catch (error: any) {
-    console.error('[CHAT_ERROR]:', error.message || error);
-    return new Response(
-      JSON.stringify({ error: 'Error en el servicio de AI', details: error.message }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    console.error('❌ ERROR FATAL EN EL SERVIDOR:', error.message || error);
+    return new Response(JSON.stringify({ error: 'Hubo un problema al contactar a la IA.' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
