@@ -41,11 +41,6 @@ const CalendarEmbed: React.FC<CalendarEmbedProps> = ({ calendarUrl, className })
     );
   }
 
-  // Google Calendar Appointment Schedule soporta embed via iframe con el parámetro ?embedded=true
-  const embedUrl = calendarUrl.includes('?')
-    ? `${calendarUrl}&embedded=true`
-    : `${calendarUrl}?embedded=true`;
-
   return (
     <div
       className={cn(
@@ -67,7 +62,7 @@ const CalendarEmbed: React.FC<CalendarEmbedProps> = ({ calendarUrl, className })
       </div>
 
       <iframe
-        src={embedUrl}
+        src={calendarUrl}
         title="Agendar cita — Google Calendar"
         className="w-full"
         style={{ height: '660px', border: 'none' }}
