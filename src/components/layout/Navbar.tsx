@@ -5,9 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Button from '../ui/Button';
-import BookingModal from '../ui/BookingModal';
-
-
+import { siteConfig } from '@/lib/config';
 const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/#nosotros', label: 'Nosotros' },
@@ -22,10 +20,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('inicio');
-    const [isBookingOpen, setIsBookingOpen] = useState(false);
     const pathname = usePathname();
-
-    const calendarUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AQUI_VA_EL_ID_REAL";
 
     useEffect(() => {
         const handleScroll = () => {
@@ -113,9 +108,11 @@ export default function Navbar() {
 
                         {/* CTA Button */}
                         <div className="hidden md:block">
-                            <Button size="sm" onClick={() => setIsBookingOpen(true)}>
-                                Agendar Cita
-                            </Button>
+                            <Link href="/agendar">
+                                <Button size="sm">
+                                    Agendar Cita
+                                </Button>
+                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -157,24 +154,17 @@ export default function Navbar() {
                                         </Link>
                                     );
                                 })}
-                                <Button size="sm" className="w-full" onClick={() => {
-                                    setIsBookingOpen(true);
-                                    setIsMobileMenuOpen(false);
-                                }}>
-                                    Agendar Cita
-                                </Button>
+                                <Link href="/agendar" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                                    <Button size="sm" className="w-full">
+                                        Agendar Cita
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     )}
                 </div>
             </nav>
 
-            {/* Google Calendar Modal */}
-            <BookingModal 
-                isOpen={isBookingOpen} 
-                onClose={() => setIsBookingOpen(false)} 
-                calendarUrl={calendarUrl}
-            />
         </>
     );
 }

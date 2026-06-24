@@ -16,6 +16,7 @@
     "@google/generative-ai": "^0.24.1",
     "ai": "^6.0.168",
     "clsx": "^2.1.1",
+    "googleapis": "^173.0.0",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "nodemailer": "^8.0.5",

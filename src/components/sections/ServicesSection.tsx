@@ -5,12 +5,10 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { services } from '@/lib/data';
 import { User, Check } from 'lucide-react';
-import BookingModal from '../ui/BookingModal';
-
+import { siteConfig } from '@/lib/config';
+import Link from 'next/link';
 
 export default function ServicesSection() {
-    const [isBookingOpen, setIsBookingOpen] = useState(false);
-    const calendarUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AQUI_VA_EL_ID_REAL";
 
     return (
         <section id="servicios" className="py-20 bg-white">
@@ -55,25 +53,20 @@ export default function ServicesSection() {
                                 ))}
                             </ul>
 
-                            <Button
-                                variant="primary"
-                                size="sm"
-                                className="w-full"
-                                onClick={() => setIsBookingOpen(true)}
-                            >
-                                Agendar Sesión
-                            </Button>
+                            <Link href="/agendar" className="w-full">
+                                <Button
+                                    variant="primary"
+                                    size="sm"
+                                    className="w-full"
+                                >
+                                    Agendar Sesión
+                                </Button>
+                            </Link>
                         </Card>
                     ))}
                 </div>
             </div>
 
-            {/* Google Calendar Modal */}
-            <BookingModal 
-                isOpen={isBookingOpen} 
-                onClose={() => setIsBookingOpen(false)} 
-                calendarUrl={calendarUrl}
-            />
         </section>
     );
 }
