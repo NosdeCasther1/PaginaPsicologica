@@ -41,6 +41,10 @@ const CalendarEmbed: React.FC<CalendarEmbedProps> = ({ calendarUrl, className })
     );
   }
 
+  const embedUrl = calendarUrl.includes('?')
+    ? calendarUrl
+    : `${calendarUrl}?gv=true`;
+
   return (
     <div
       className={cn(
@@ -62,12 +66,11 @@ const CalendarEmbed: React.FC<CalendarEmbedProps> = ({ calendarUrl, className })
       </div>
 
       <iframe
-        src={calendarUrl}
+        src={embedUrl}
         title="Agendar cita — Google Calendar"
         className="w-full"
         style={{ height: '660px', border: 'none' }}
         loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
       />
     </div>
   );
