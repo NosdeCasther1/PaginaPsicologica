@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     authors: [{ name: 'Selah' }],
     creator: 'Selah',
     publisher: 'Selah',
+    icons: {
+        icon: '/images/selah-logo.png',
+        apple: '/images/selah-logo.png',
+    },
     alternates: {
         canonical: BASE_URL,
     },
@@ -82,7 +86,7 @@ export default function RootLayout({
         'name': 'Selah',
         'alternateName': 'Clínica de Psicología Selah',
         'url': BASE_URL,
-        'logo': `${BASE_URL}/opengraph-image`,
+        'logo': `${BASE_URL}/images/selah-logo.png`,
         'image': `${BASE_URL}/opengraph-image`,
         'description': 'Clínica de psicología especializada en terapia online y presencial en Huehuetenango.',
         'address': {

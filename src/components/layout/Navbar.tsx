@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Button from '../ui/Button';
-import { siteConfig } from '@/lib/config';
 const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/#nosotros', label: 'Nosotros' },
@@ -68,11 +68,14 @@ export default function Navbar() {
                     <div className="flex items-center justify-between h-20">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center">
-                                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                </svg>
-                            </div>
+                            <Image
+                                src="/images/selah-mark.webp"
+                                alt="Selah Psicología y Crecimiento Interior"
+                                width={48}
+                                height={48}
+                                priority
+                                className="h-11 w-11 rounded-full object-cover ring-1 ring-teal-100"
+                            />
                             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
                                 Selah
                             </span>
