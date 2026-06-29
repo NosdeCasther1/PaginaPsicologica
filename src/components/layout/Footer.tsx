@@ -19,7 +19,7 @@ export default function Footer() {
                             </div>
                             <span className="text-xl font-bold">Selah</span>
                         </div>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-gray-300 text-sm">
                             Tu bienestar mental, estés donde estés.
                         </p>
                     </div>
@@ -27,7 +27,7 @@ export default function Footer() {
                     {/* Navigation */}
                     <div>
                         <h4 className="font-semibold mb-4">Navegación</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
+                        <ul className="space-y-2 text-sm text-gray-300">
                             <li><a href="#inicio" className="hover:text-white transition-colors">Inicio</a></li>
                             <li><a href="#nosotros" className="hover:text-white transition-colors">Nosotros</a></li>
                             <li><a href="#servicios" className="hover:text-white transition-colors">Servicios</a></li>
@@ -60,7 +60,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
                     <p>&copy; {currentYear} Selah. Todos los derechos reservados.</p>
-                    <p className="mt-2">Servicios de psicología profesional 100% en línea.</p>
+                    <p className="mt-2 text-gray-300">Servicios de psicología profesional 100% en línea.</p>
                 </div>
             </div>
         </footer>

@@ -34,6 +34,7 @@ export default function ResourcesSection() {
                                     alt={article.title}
                                     fill
                                     className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                                 />
                                 <div className="absolute top-4 left-4 px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-xs font-semibold text-blue-600">
                                     {article.category}
@@ -49,6 +50,7 @@ export default function ResourcesSection() {
                                     <Link
                                         href={`/articulos/${article.slug}`}
                                         className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                                        aria-label={`Leer artículo: ${article.title}`}
                                     >
                                         Leer más →
                                     </Link>

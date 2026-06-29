@@ -31,7 +31,9 @@ export default function FAQSection() {
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
-                                suppressHydrationWarning
+                                aria-expanded={openIndex === index}
+                                aria-controls={`faq-panel-${index}`}
+                                id={`faq-button-${index}`}
                             >
                                 <span className="font-semibold text-gray-900 pr-8">{faq.question}</span>
                                 <svg
@@ -42,12 +44,16 @@ export default function FAQSection() {
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
+                                    aria-hidden="true"
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </button>
 
                             <div
+                                id={`faq-panel-${index}`}
+                                role="region"
+                                aria-labelledby={`faq-button-${index}`}
                                 className={cn(
                                     'overflow-hidden transition-all duration-300',
                                     openIndex === index ? 'max-h-96' : 'max-h-0'

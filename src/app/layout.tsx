@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat';
-import ChatWidget from '@/components/chat/ChatWidget';
+import ClientChatWidget from '@/components/chat/ClientChatWidget';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({
@@ -125,6 +125,9 @@ export default function RootLayout({
     return (
         <html lang="es" className="scroll-smooth">
             <head>
+                {/* Preconnect para reducir latencia de fuentes de Google */}
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -132,10 +135,10 @@ export default function RootLayout({
             </head>
             <body className={inter.className} suppressHydrationWarning>
                 <Navbar />
-                <main>{children}</main>
+                <main id="main-content" aria-label="Contenido principal">{children}</main>
                 <Footer />
                 <WhatsAppFloat />
-                <ChatWidget />
+                <ClientChatWidget />
             </body>
         </html>
     );

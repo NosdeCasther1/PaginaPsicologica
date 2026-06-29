@@ -81,11 +81,14 @@ export default function HeroSection() {
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                             <Image
                                 src="/images/hero-image.jpg"
-                                alt="Terapia online profesional"
+                                alt="Terapeuta psicóloga en sesión de terapia online profesional"
                                 width={600}
                                 height={700}
                                 className="w-full h-auto"
                                 priority
+                                fetchPriority="high"
+                                quality={90}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                             />
                             <div className="absolute top-6 right-6 px-4 py-3 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg flex items-center gap-2 animate-float">
                                 <span className="text-2xl">🌱</span>
