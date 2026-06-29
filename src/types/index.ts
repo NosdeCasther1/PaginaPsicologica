@@ -1,4 +1,4 @@
-// Type definitions for Salud Mental website
+// Type definitions for Selah website
 
 export interface Service {
     id: string;

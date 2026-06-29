@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.baseUrl}/agendar`,
   },
   openGraph: {
-    title: 'Agendar Cita | Salud Mental',
+    title: 'Agendar Cita | Selah',
     description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
     url: `${siteConfig.baseUrl}/agendar`,
     images: [defaultOpenGraphImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agendar Cita | Salud Mental',
+    title: 'Agendar Cita | Selah',
     description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
     images: [defaultTwitterImage],
   },

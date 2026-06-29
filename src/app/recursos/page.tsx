@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.baseUrl}/recursos`,
   },
   openGraph: {
-    title: 'Recursos de Salud Mental | Salud Mental',
+    title: 'Recursos de Selah | Selah',
     description:
       'Información sobre ansiedad, estrés, depresión, duelo, autoestima, problemas de pareja y salud mental infantil.',
     url: `${siteConfig.baseUrl}/recursos`,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Recursos de Salud Mental | Salud Mental',
+    title: 'Recursos de Selah | Selah',
     description:
       'Información sobre ansiedad, estrés, depresión, duelo, autoestima, problemas de pareja y salud mental infantil.',
     images: [defaultTwitterImage],

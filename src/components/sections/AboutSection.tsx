@@ -25,7 +25,7 @@ export default function AboutSection() {
                         </span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        En Salud Mental, entendemos la psicología no solo como una disciplina clínica, sino como un encuentro humano transformador.
+                        En Selah, entendemos la psicología no solo como una disciplina clínica, sino como un encuentro humano transformador.
                     </p>
                 </div>
 

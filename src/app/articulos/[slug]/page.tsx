@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `${siteConfig.baseUrl}/articulos/${article.slug}`,
     },
     openGraph: {
-      title: `${article.title} | Salud Mental`,
+      title: `${article.title} | Selah`,
       description: article.excerpt,
       url: `${siteConfig.baseUrl}/articulos/${article.slug}`,
       type: 'article',
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${article.title} | Salud Mental`,
+      title: `${article.title} | Selah`,
       description: article.excerpt,
       images: [article.image],
     },

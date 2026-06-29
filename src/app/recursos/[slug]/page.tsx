@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `${siteConfig.baseUrl}/recursos/${condition.slug}`,
     },
     openGraph: {
-      title: `${condition.title} | Salud Mental`,
+      title: `${condition.title} | Selah`,
       description: condition.shortDescription,
       url: `${siteConfig.baseUrl}/recursos/${condition.slug}`,
       images: [defaultOpenGraphImage],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${condition.title} | Salud Mental`,
+      title: `${condition.title} | Selah`,
       description: condition.shortDescription,
       images: [defaultTwitterImage],
     },

@@ -8,14 +8,14 @@ import { siteConfig } from '@/lib/config';
 import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Artículos de Salud Mental',
+  title: 'Artículos de Selah',
   description:
     'Artículos prácticos sobre ansiedad, estrés, burnout, pareja, duelo, autoestima y salud mental infantil escritos con enfoque psicológico y fuentes confiables.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/articulos`,
   },
   openGraph: {
-    title: 'Artículos de Salud Mental | Salud Mental',
+    title: 'Artículos de Selah | Selah',
     description:
       'Información práctica y responsable sobre salud mental, terapia online y bienestar emocional.',
     url: `${siteConfig.baseUrl}/articulos`,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Artículos de Salud Mental | Salud Mental',
+    title: 'Artículos de Selah | Selah',
     description:
       'Información práctica y responsable sobre salud mental, terapia online y bienestar emocional.',
     images: [defaultTwitterImage],

@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Salud Mental — Terapia Online Profesional';
+export const alt = 'Selah — Terapia Online Profesional';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -82,7 +82,7 @@ export default function Image() {
               lineHeight: 1.1,
             }}
           >
-            Salud Mental
+            Selah
           </div>
           <div
             style={{

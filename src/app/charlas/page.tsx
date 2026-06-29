@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.baseUrl}/charlas`,
   },
   openGraph: {
-    title: 'Charlas y Eventos | Salud Mental',
+    title: 'Charlas y Eventos | Selah',
     description: 'Galería de charlas, conferencias y talleres de salud mental en Guatemala.',
     url: `${siteConfig.baseUrl}/charlas`,
     images: [defaultOpenGraphImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Charlas y Eventos | Salud Mental',
+    title: 'Charlas y Eventos | Selah',
     description: 'Galería de charlas, conferencias y talleres de salud mental en Guatemala.',
     images: [defaultTwitterImage],
   },

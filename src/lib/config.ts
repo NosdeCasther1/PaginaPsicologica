@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: 'Salud Mental',
+  name: 'Selah',
   description: 'Terapia psicológica 100% online. Atención profesional y cálida para niños, adolescentes, parejas, adultos mayores y ejecutivos.',
   baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://pagina-psicologica.vercel.app',
   links: {

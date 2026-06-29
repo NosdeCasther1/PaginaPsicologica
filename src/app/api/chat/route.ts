@@ -52,7 +52,7 @@ function textStreamResponse(delta: string) {
 const BOOKING_URL = siteConfig.links.calendarUrl;
 const CALENDAR_TIME_ZONE = process.env.GOOGLE_CALENDAR_TIME_ZONE || 'America/Guatemala';
 
-const SYSTEM_PROMPT = `Eres "Luz", asistente de recepción de la clínica "Salud Mental". Eres cálida, empática y concisa. Respondes en español.
+const SYSTEM_PROMPT = `Eres "Luz", asistente de recepción de la clínica "Selah". Eres cálida, empática y concisa. Respondes en español.
 
 Servicios disponibles: Terapia Individual, Terapia de Pareja y Terapia Infantil (100% online).
 

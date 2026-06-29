@@ -17,7 +17,7 @@ export default function Footer() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
                             </div>
-                            <span className="text-xl font-bold">Salud Mental</span>
+                            <span className="text-xl font-bold">Selah</span>
                         </div>
                         <p className="text-gray-400 text-sm">
                             Tu bienestar mental, estés donde estés.
@@ -59,7 +59,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
-                    <p>&copy; {currentYear} Salud Mental. Todos los derechos reservados.</p>
+                    <p>&copy; {currentYear} Selah. Todos los derechos reservados.</p>
                     <p className="mt-2">Servicios de psicología profesional 100% en línea.</p>
                 </div>
             </div>

@@ -12,14 +12,14 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.baseUrl}/contacto`,
   },
   openGraph: {
-    title: 'Contacto y Reservas | Salud Mental',
+    title: 'Contacto y Reservas | Selah',
     description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
     url: `${siteConfig.baseUrl}/contacto`,
     images: [defaultOpenGraphImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contacto y Reservas | Salud Mental',
+    title: 'Contacto y Reservas | Selah',
     description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
     images: [defaultTwitterImage],
   },

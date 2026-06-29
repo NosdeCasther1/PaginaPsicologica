@@ -74,7 +74,7 @@ export default function Navbar() {
                                 </svg>
                             </div>
                             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                                Salud Mental
+                                Selah
                             </span>
                         </Link>
 
