@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { articles } from '@/lib/articles';
 import { siteConfig } from '@/lib/config';
+import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Artículos de Salud Mental',
@@ -18,6 +19,14 @@ export const metadata: Metadata = {
     description:
       'Información práctica y responsable sobre salud mental, terapia online y bienestar emocional.',
     url: `${siteConfig.baseUrl}/articulos`,
+    images: [defaultOpenGraphImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artículos de Salud Mental | Salud Mental',
+    description:
+      'Información práctica y responsable sobre salud mental, terapia online y bienestar emocional.',
+    images: [defaultTwitterImage],
   },
 };
 

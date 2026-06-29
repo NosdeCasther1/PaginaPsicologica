@@ -3,7 +3,7 @@ import { Service, Benefit, Philosophy, FAQ, Resource, Stat, Charla } from '@/typ
 // Hero Stats
 export const stats: Stat[] = [
     { number: '500+', label: 'Pacientes Atendidos' },
-    { number: '15+', label: 'Años de Experiencia' },
+    { number: '2+', label: 'Años de Experiencia' },
     { number: '100%', label: 'Online' },
 ];
 

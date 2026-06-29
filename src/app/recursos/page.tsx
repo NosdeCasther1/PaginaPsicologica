@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { conditions } from '@/lib/conditions';
 import { siteConfig } from '@/lib/config';
+import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Recursos y Condiciones',
@@ -17,6 +18,14 @@ export const metadata: Metadata = {
     description:
       'Información sobre ansiedad, estrés, depresión, duelo, autoestima, problemas de pareja y salud mental infantil.',
     url: `${siteConfig.baseUrl}/recursos`,
+    images: [defaultOpenGraphImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Recursos de Salud Mental | Salud Mental',
+    description:
+      'Información sobre ansiedad, estrés, depresión, duelo, autoestima, problemas de pareja y salud mental infantil.',
+    images: [defaultTwitterImage],
   },
 };
 

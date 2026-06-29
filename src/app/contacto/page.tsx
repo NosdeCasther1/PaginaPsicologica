@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import CalendarEmbed from '@/components/ui/CalendarEmbed';
 import { Calendar, Mail, MapPin, Phone } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
+import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Contacto y Reservas',
@@ -14,6 +15,13 @@ export const metadata: Metadata = {
     title: 'Contacto y Reservas | Salud Mental',
     description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
     url: `${siteConfig.baseUrl}/contacto`,
+    images: [defaultOpenGraphImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contacto y Reservas | Salud Mental',
+    description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
+    images: [defaultTwitterImage],
   },
 };
 

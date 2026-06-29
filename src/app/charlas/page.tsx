@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { charlasData } from '@/lib/data';
 import { Calendar, Info } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
+import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Charlas y Eventos',
@@ -15,6 +16,13 @@ export const metadata: Metadata = {
     title: 'Charlas y Eventos | Salud Mental',
     description: 'Galería de charlas, conferencias y talleres de salud mental en Guatemala.',
     url: `${siteConfig.baseUrl}/charlas`,
+    images: [defaultOpenGraphImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Charlas y Eventos | Salud Mental',
+    description: 'Galería de charlas, conferencias y talleres de salud mental en Guatemala.',
+    images: [defaultTwitterImage],
   },
 };
 

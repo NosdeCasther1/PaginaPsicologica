@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/lib/config';
 import CalendarEmbed from '@/components/ui/CalendarEmbed';
+import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Agendar Cita',
@@ -13,6 +14,13 @@ export const metadata: Metadata = {
     title: 'Agendar Cita | Salud Mental',
     description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
     url: `${siteConfig.baseUrl}/agendar`,
+    images: [defaultOpenGraphImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Agendar Cita | Salud Mental',
+    description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
+    images: [defaultTwitterImage],
   },
 };
 

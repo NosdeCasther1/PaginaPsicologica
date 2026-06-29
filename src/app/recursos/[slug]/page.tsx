@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, CheckCircle, HelpCircle, Lightbulb } from 'lucide-react';
 import { conditions, getConditionBySlug } from '@/lib/conditions';
 import { siteConfig } from '@/lib/config';
+import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -31,6 +32,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${condition.title} | Salud Mental`,
       description: condition.shortDescription,
       url: `${siteConfig.baseUrl}/recursos/${condition.slug}`,
+      images: [defaultOpenGraphImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${condition.title} | Salud Mental`,
+      description: condition.shortDescription,
+      images: [defaultTwitterImage],
     },
   };
 }
