@@ -1,9 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Card from '../ui/Card';
-import { resources } from '@/lib/data';
+import { articles } from '@/lib/articles';
 
 export default function ResourcesSection() {
+    const featuredArticles = articles.slice(0, 3);
+
     return (
         <section id="recursos" className="py-20 bg-gray-50">
             <div className="max-w-7xl mx-auto px-6">
@@ -18,41 +21,50 @@ export default function ResourcesSection() {
                         </span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Información valiosa para tu bienestar emocional.
+                        Información práctica, responsable y basada en fuentes confiables para tu bienestar emocional.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {resources.map((resource) => (
-                        <Card key={resource.id} className="p-0 overflow-hidden">
+                    {featuredArticles.map((article) => (
+                        <Card key={article.slug} className="p-0 overflow-hidden">
                             <div className="relative h-48">
                                 <Image
-                                    src={resource.image}
-                                    alt={resource.title}
+                                    src={article.image}
+                                    alt={article.title}
                                     fill
                                     className="object-cover"
                                 />
                                 <div className="absolute top-4 left-4 px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-xs font-semibold text-blue-600">
-                                    {resource.category}
+                                    {article.category}
                                 </div>
                             </div>
 
                             <div className="p-6">
-                                <h3 className="text-xl font-bold mb-3">{resource.title}</h3>
-                                <p className="text-gray-600 mb-4">{resource.description}</p>
+                                <h3 className="text-xl font-bold mb-3">{article.title}</h3>
+                                <p className="text-gray-600 mb-4">{article.excerpt}</p>
 
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm text-gray-500">📖 {resource.readTime}</span>
-                                    <a
-                                        href={resource.link}
+                                    <span className="text-sm text-gray-500">📖 {article.readTime}</span>
+                                    <Link
+                                        href={`/articulos/${article.slug}`}
                                         className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
                                     >
                                         Leer más →
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </Card>
                     ))}
+                </div>
+
+                <div className="mt-10 text-center">
+                    <Link
+                        href="/articulos"
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white border border-blue-100 text-blue-600 font-semibold hover:bg-blue-50 transition-colors shadow-sm"
+                    >
+                        Ver todos los artículos
+                    </Link>
                 </div>
             </div>
         </section>

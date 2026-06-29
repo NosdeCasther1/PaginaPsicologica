@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/config';
 import { conditions } from '@/lib/conditions';
+import { articles } from '@/lib/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const base = siteConfig.baseUrl;
@@ -11,6 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
+    }));
+
+    const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
+        url: `${base}/articulos/${article.slug}`,
+        lastModified: new Date(article.publishedAt),
+        changeFrequency: 'monthly',
+        priority: 0.75,
     }));
 
     return [
@@ -33,6 +41,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.85,
         },
         {
+            url: `${base}/articulos`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.85,
+        },
+        {
             url: `${base}/contacto`,
             lastModified: now,
             changeFrequency: 'yearly',
@@ -45,5 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         ...conditionRoutes,
+        ...articleRoutes,
     ];
 }
