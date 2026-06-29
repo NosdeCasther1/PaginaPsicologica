@@ -1,11 +1,24 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import CalendarEmbed from '@/components/ui/CalendarEmbed';
 import { Calendar, Mail, MapPin, Phone } from 'lucide-react';
+import { siteConfig } from '@/lib/config';
+
+export const metadata: Metadata = {
+  title: 'Contacto y Reservas',
+  description: 'Contáctanos y reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala y modalidad online.',
+  alternates: {
+    canonical: `${siteConfig.baseUrl}/contacto`,
+  },
+  openGraph: {
+    title: 'Contacto y Reservas | Salud Mental',
+    description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
+    url: `${siteConfig.baseUrl}/contacto`,
+  },
+};
 
 export default function ContactoPage() {
-  const calendarUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AQUI_VA_EL_ID_REAL";
+  const calendarUrl = siteConfig.links.calendarUrl;
 
   return (
     <main className="min-h-screen pt-32 pb-20 bg-gradient-to-b from-white to-gray-50">

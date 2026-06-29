@@ -1,26 +1,49 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/lib/config';
+import { conditions } from '@/lib/conditions';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://saludmental.com.gt'; // Cambiar por el dominio real
+    const base = siteConfig.baseUrl;
+    const now = new Date();
+
+    const conditionRoutes: MetadataRoute.Sitemap = conditions.map((condition) => ({
+        url: `${base}/recursos/${condition.slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+    }));
 
     return [
         {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
+            url: base,
+            lastModified: now,
+            changeFrequency: 'monthly',
             priority: 1,
         },
         {
-            url: `${baseUrl}/charlas`,
-            lastModified: new Date(),
+            url: `${base}/agendar`,
+            lastModified: now,
             changeFrequency: 'monthly',
+            priority: 0.9,
+        },
+        {
+            url: `${base}/recursos`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        {
+            url: `${base}/contacto`,
+            lastModified: now,
+            changeFrequency: 'yearly',
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/contacto`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
+            url: `${base}/charlas`,
+            lastModified: now,
+            changeFrequency: 'monthly',
             priority: 0.7,
         },
+        ...conditionRoutes,
     ];
 }

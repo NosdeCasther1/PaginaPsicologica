@@ -1,6 +1,20 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { siteConfig } from '@/lib/config';
 import CalendarEmbed from '@/components/ui/CalendarEmbed';
+
+export const metadata: Metadata = {
+  title: 'Agendar Cita',
+  description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti. Proceso 100% confidencial y seguro.',
+  alternates: {
+    canonical: `${siteConfig.baseUrl}/agendar`,
+  },
+  openGraph: {
+    title: 'Agendar Cita | Salud Mental',
+    description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
+    url: `${siteConfig.baseUrl}/agendar`,
+  },
+};
 
 export default function AgendarPage() {
   const calendarUrl = siteConfig.links.calendarUrl;

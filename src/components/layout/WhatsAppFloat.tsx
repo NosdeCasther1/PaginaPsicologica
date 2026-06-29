@@ -1,18 +1,20 @@
 'use client';
 
 import React from 'react';
-import { contactInfo } from '@/lib/data';
+import { siteConfig } from '@/lib/config';
 
 export default function WhatsAppFloat() {
     const handleClick = () => {
         const message = encodeURIComponent('Hola, me gustaría agendar una cita de terapia online.');
-        window.open(`https://wa.me/${contactInfo.whatsapp}?text=${message}`, '_blank');
+        const baseUrl = siteConfig.links.whatsapp;
+        const separator = baseUrl.includes('?') ? '&' : '?';
+        window.open(`${baseUrl}${separator}text=${message}`, '_blank');
     };
 
     return (
         <button
             onClick={handleClick}
-            className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-pulse"
+            className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
             aria-label="Contactar por WhatsApp"
             suppressHydrationWarning
         >

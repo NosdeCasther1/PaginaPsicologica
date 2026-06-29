@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat';
 import ChatWidget from '@/components/chat/ChatWidget';
+import { siteConfig } from '@/lib/config';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -16,7 +17,10 @@ const playfair = Playfair_Display({
     display: 'swap',
 });
 
+const BASE_URL = siteConfig.baseUrl;
+
 export const metadata: Metadata = {
+    metadataBase: new URL(BASE_URL),
     title: {
         default: 'Salud Mental | Terapia Online Profesional',
         template: '%s | Salud Mental',
@@ -26,6 +30,9 @@ export const metadata: Metadata = {
     authors: [{ name: 'Salud Mental' }],
     creator: 'Salud Mental',
     publisher: 'Salud Mental',
+    alternates: {
+        canonical: BASE_URL,
+    },
     formatDetection: {
         email: false,
         address: false,
@@ -34,19 +41,33 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Salud Mental | Terapia Online Profesional',
         description: 'Atención psicológica profesional y cálida en Huehuetenango y modalidad online. Tu bienestar es nuestra prioridad.',
-        url: 'https://saludmental.com.gt', // Ajustar a la URL real si se conoce
+        url: BASE_URL,
         siteName: 'Salud Mental',
         locale: 'es_GT',
         type: 'website',
+        images: [
+            {
+                url: '/opengraph-image',
+                width: 1200,
+                height: 630,
+                alt: 'Salud Mental — Terapia Online Profesional',
+            },
+        ],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Salud Mental | Terapia Online Profesional',
         description: 'Psicología y terapia online en Huehuetenango, Guatemala.',
+        images: ['/opengraph-image'],
     },
     robots: {
         index: true,
         follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+        },
     },
 };
 
@@ -60,9 +81,9 @@ export default function RootLayout({
         '@type': 'MedicalClinic',
         'name': 'Salud Mental',
         'alternateName': 'Clínica de Psicología Salud Mental',
-        'url': 'https://saludmental.com.gt',
-        'logo': 'https://saludmental.com.gt/logo.png',
-        'image': 'https://saludmental.com.gt/clinic-image.jpg',
+        'url': BASE_URL,
+        'logo': `${BASE_URL}/opengraph-image`,
+        'image': `${BASE_URL}/opengraph-image`,
         'description': 'Clínica de psicología especializada en terapia online y presencial en Huehuetenango.',
         'address': {
             '@type': 'PostalAddress',
