@@ -6,7 +6,7 @@ export const siteConfig = {
     // URL pública de Google Calendar Appointment Schedule para embeber / redirigir
     // Formato: https://calendar.google.com/calendar/appointments/schedules/<SCHEDULE_ID>
     calendarUrl: process.env.NEXT_PUBLIC_GOOGLE_APPOINTMENT_URL || '',
-    whatsapp: 'https://wa.me/5021234567',
+    whatsapp: 'https://wa.me/50251455816',
   },
   contact: {
     email: process.env.CONTACT_EMAIL || 'contacto@saludmental.com',

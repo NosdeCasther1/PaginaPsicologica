@@ -101,7 +101,7 @@ export default function RootLayout({
             'latitude': 15.3147,
             'longitude': -91.4762,
         },
-        'telephone': '+502 1234 5678',
+        'telephone': '+502 51455816',
         'openingHoursSpecification': [
             {
                 '@type': 'OpeningHoursSpecification',

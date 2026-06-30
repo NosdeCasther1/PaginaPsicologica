@@ -51,7 +51,7 @@ export default function HeroSection() {
                                 size="lg"
                                 onClick={() => {
                                     const message = encodeURIComponent('Hola, me gustaría agendar una cita de terapia online.');
-                                    window.open(`https://wa.me/5021234567?text=${message}`, '_blank');
+                                    window.open(`https://wa.me/50251455816?text=${message}`, '_blank');
                                 }}
                             >
                                 <MessageCircle className="w-5 h-5" />

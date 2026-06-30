@@ -120,7 +120,7 @@ export default function ContactSection() {
                                 label="Teléfono"
                                 type="tel"
                                 name="phone"
-                                placeholder="+502 1234 5678"
+                                placeholder="+502 51455816"
                             />
 
                             <div>

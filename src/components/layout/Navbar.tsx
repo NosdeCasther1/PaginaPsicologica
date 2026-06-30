@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import Button from '../ui/Button';
 const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/#nosotros', label: 'Nosotros' },

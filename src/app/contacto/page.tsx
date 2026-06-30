@@ -74,7 +74,7 @@ export default function ContactoPage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="w-5 h-5 opacity-80" />
-                  <span>+52 (55) 1234 5678</span>
+                  <span>+502 51455816</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 opacity-80" />
