@@ -4,6 +4,29 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Bot, MessageCircle, Minus, Send, User, X } from 'lucide-react';
 import { useChat } from '@ai-sdk/react';
 
+function renderMessageText(text: string, keyPrefix: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const segments = text.split(urlRegex);
+
+  return segments.map((segment, index) => {
+    if (/^https?:\/\//.test(segment)) {
+      return (
+        <a
+          key={`${keyPrefix}-link-${index}`}
+          href={segment}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-blue-600 underline underline-offset-2 break-all"
+        >
+          Abrir calendario
+        </a>
+      );
+    }
+
+    return <React.Fragment key={`${keyPrefix}-text-${index}`}>{segment}</React.Fragment>;
+  });
+}
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isMinimized, setIsMinimized] = React.useState(false);
@@ -115,14 +138,20 @@ export default function ChatWidget() {
                     </div>
                     <div
                       className={cn(
-                        'p-3 rounded-2xl text-sm shadow-sm',
+                        'min-w-0 max-w-full p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap break-words overflow-hidden',
                         m.role === 'user'
                           ? 'bg-blue-600 text-white rounded-tr-none'
                           : 'bg-white text-neutral-800 border border-neutral-100 rounded-tl-none',
                       )}
                     >
                       {m.parts.map((part, i) => {
-                        if (part.type === 'text') return <span key={i}>{part.text}</span>;
+                        if (part.type === 'text') {
+                          return (
+                            <span key={i}>
+                              {renderMessageText(part.text, `${m.id}-${i}`)}
+                            </span>
+                          );
+                        }
                         return null;
                       })}
                     </div>

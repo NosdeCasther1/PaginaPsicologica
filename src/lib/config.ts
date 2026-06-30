@@ -5,11 +5,13 @@ export const siteConfig = {
   links: {
     // URL pública de Google Calendar Appointment Schedule para embeber / redirigir
     // Formato: https://calendar.google.com/calendar/appointments/schedules/<SCHEDULE_ID>
-    calendarUrl: process.env.NEXT_PUBLIC_GOOGLE_APPOINTMENT_URL || '',
+    calendarUrl:
+      process.env.NEXT_PUBLIC_GOOGLE_APPOINTMENT_URL ||
+      'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0C26pVwMpuPTFnWqlsf5mIyNZPlKqsLTmdttDctx338p4QBFrIwJSi1VeLPVlKpeRokyJz2_ej?gv=true',
     whatsapp: 'https://wa.me/50251455816',
   },
   contact: {
-    email: process.env.CONTACT_EMAIL || 'contacto@saludmental.com',
+    email: process.env.CONTACT_EMAIL || 'selahpsicologiagt@gmail.com',
   },
   googleCalendar: {
     // ID del calendario donde aparecen las citas de Appointment Schedule

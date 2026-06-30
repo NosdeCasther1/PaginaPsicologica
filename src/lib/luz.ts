@@ -134,13 +134,13 @@ export async function generateLuzReply(messages: ChatMessage[]): Promise<string>
 
     if (!availability.configured) {
       return BOOKING_URL
-        ? `Todavía no puedo consultar disponibilidad real desde el chat. Para ver horarios confirmados y reservar, entra aquí: ${BOOKING_URL}`
+        ? `Todavía no puedo consultar disponibilidad real desde el chat. Para ver horarios confirmados y reservar, abre el calendario:\n${BOOKING_URL}`
         : 'Todavía no puedo consultar disponibilidad real desde el chat. Para ver horarios confirmados y reservar, entra a la sección /agendar.';
     }
 
     if (availability.availableSlots.length === 0) {
       return BOOKING_URL
-        ? `No veo espacios libres en el calendario interno para ${requestedAvailabilityDate.label} dentro del horario configurado. Para confirmar otras fechas disponibles, entra aquí: ${BOOKING_URL}`
+        ? `No veo espacios libres para ${requestedAvailabilityDate.label} dentro del horario configurado. Puedes revisar otras fechas en el calendario:\n${BOOKING_URL}`
         : `No veo espacios libres en el calendario interno para ${requestedAvailabilityDate.label} dentro del horario configurado. Para confirmar otras fechas disponibles, visita la sección /agendar.`;
     }
 
@@ -150,13 +150,13 @@ export async function generateLuzReply(messages: ChatMessage[]): Promise<string>
       .join(', ');
 
     return BOOKING_URL
-      ? `Según el calendario interno, veo posibles espacios libres para ${requestedAvailabilityDate.label}: ${slots}. Para confirmar disponibilidad real y reservar, entra aquí: ${BOOKING_URL}`
+      ? `Veo espacios libres para ${requestedAvailabilityDate.label}: ${slots}.\n\nPara confirmar y reservar:\n${BOOKING_URL}`
       : `Según el calendario interno, veo posibles espacios libres para ${requestedAvailabilityDate.label}: ${slots}. Para confirmar disponibilidad real y reservar, entra a la sección /agendar.`;
   }
 
   if (isBookingQuestion && !isExistingAppointmentQuestion) {
     return BOOKING_URL
-      ? `Para ver los horarios disponibles y reservar tu sesión, puedes acceder directamente a nuestro calendario en: ${BOOKING_URL}\n\nTambién puedes ir a la sección /agendar de nuestra página. Allí verás la disponibilidad real y podrás confirmar tu cita en segundos.`
+      ? `Claro. Para ver horarios disponibles y reservar tu sesión, abre el calendario:\n${BOOKING_URL}\n\nTambién puedes ir a la sección /agendar de nuestra página.`
       : 'Para ver los horarios disponibles y reservar tu sesión, visita la sección /agendar de nuestra página. Allí encontrarás el calendario con la disponibilidad real.';
   }
 

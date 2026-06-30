@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { readFileSync } from 'node:fs';
 
 export type CalendarEvent = {
   id: string;
@@ -54,11 +55,15 @@ function parseServiceAccountKey(rawKey: string) {
 
 function getCalendarClient() {
   const configuredEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const rawKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+  const rawKey =
+    process.env.GOOGLE_SERVICE_ACCOUNT_KEY ||
+    (process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE
+      ? readFileSync(process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE, 'utf8')
+      : '');
 
   if (!rawKey) {
     throw new Error(
-      'Falta la variable de entorno GOOGLE_SERVICE_ACCOUNT_KEY',
+      'Falta GOOGLE_SERVICE_ACCOUNT_KEY o GOOGLE_SERVICE_ACCOUNT_KEY_FILE',
     );
   }
 
@@ -280,6 +285,7 @@ export async function getAvailabilityForDate(date: string): Promise<CalendarAvai
 export function isGoogleCalendarConfigured(): boolean {
   return !!(
     process.env.GOOGLE_CALENDAR_ID &&
-    process.env.GOOGLE_SERVICE_ACCOUNT_KEY
+    (process.env.GOOGLE_SERVICE_ACCOUNT_KEY ||
+      process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE)
   );
 }

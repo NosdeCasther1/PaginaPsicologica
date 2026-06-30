@@ -70,7 +70,7 @@ export default function ContactoPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Mail className="w-5 h-5 opacity-80" />
-                  <span>contacto@saludmental.com</span>
+                  <span>selahpsicologiagt@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="w-5 h-5 opacity-80" />
