@@ -168,7 +168,7 @@ export const faqs: FAQ[] = [
     {
         id: 'payment-methods',
         question: '¿Qué métodos de pago aceptan?',
-        answer: 'Aceptamos transferencias bancarias, pagos con tarjeta de crédito/débito, y plataformas digitales como PayPal. El pago se realiza antes o al inicio de cada sesión para confirmar tu cita.',
+        answer: 'Las formas de pago son a través de transferencias, depósitos, o con tarjeta de crédito o débito. El pago se realiza antes o al inicio de cada sesión para confirmar tu cita.',
     },
     {
         id: 'number-of-sessions',
