@@ -35,7 +35,7 @@ export default function ArticlesPage() {
     <main className="min-h-screen bg-gray-50 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
             Artículos
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">

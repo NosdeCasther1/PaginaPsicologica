@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: Props) {
             </Link>
 
             <div className="flex flex-wrap items-center gap-3 mb-5 text-sm">
-              <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full font-semibold">
+              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-semibold">
                 {article.category}
               </span>
               <span className="text-gray-400">{article.readTime}</span>

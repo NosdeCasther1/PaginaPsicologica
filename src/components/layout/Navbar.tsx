@@ -112,10 +112,11 @@ export default function Navbar() {
 
                         {/* CTA Button */}
                         <div className="hidden md:block">
-                            <Link href="/agendar">
-                                <Button size="sm">
-                                    Agendar Cita
-                                </Button>
+                            <Link
+                                href="/agendar"
+                                className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm rounded-full font-semibold bg-gradient-to-r from-blue-500 to-teal-500 text-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-[44px]"
+                            >
+                                Agendar Cita
                             </Link>
                         </div>
 
@@ -158,10 +159,12 @@ export default function Navbar() {
                                         </Link>
                                     );
                                 })}
-                                <Link href="/agendar" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button size="sm" className="w-full">
-                                        Agendar Cita
-                                    </Button>
+                                <Link
+                                    href="/agendar"
+                                    className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm rounded-full font-semibold bg-gradient-to-r from-blue-500 to-teal-500 text-white hover:shadow-lg transition-all duration-300 w-full min-h-[44px]"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    Agendar Cita
                                 </Link>
                             </div>
                         </div>

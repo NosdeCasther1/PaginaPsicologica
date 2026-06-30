@@ -39,11 +39,12 @@ export default function HeroSection() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Link href="/agendar">
-                                <Button size="lg">
-                                    Reservar mi sesión online
-                                    <ArrowRight className="w-5 h-5" />
-                                </Button>
+                            <Link
+                                href="/agendar"
+                                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg rounded-full font-semibold bg-gradient-to-r from-blue-500 to-teal-500 text-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-[48px]"
+                            >
+                                Reservar mi sesión online
+                                <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </Link>
                             <Button
                                 variant="secondary"
