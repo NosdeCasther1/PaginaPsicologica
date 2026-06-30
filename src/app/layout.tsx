@@ -125,9 +125,6 @@ export default function RootLayout({
     return (
         <html lang="es" className="scroll-smooth">
             <head>
-                {/* Preconnect para reducir latencia de fuentes de Google */}
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

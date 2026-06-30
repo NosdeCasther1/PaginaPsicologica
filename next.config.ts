@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Optimizar importaciones para tree-shaking más agresivo
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'ai', '@ai-sdk/react'],
+  },
 };
 
 export default nextConfig;
