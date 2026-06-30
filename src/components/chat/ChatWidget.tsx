@@ -54,7 +54,7 @@ export default function ChatWidget() {
               <div>
                 <p className="text-sm font-semibold">Asistente Virtual</p>
                 {!isMinimized && (
-                  <p className="text-[10px] opacity-80">En l&iacute;nea ahora</p>
+                  <p className="text-[10px] text-blue-100">En l&iacute;nea ahora</p>
                 )}
               </div>
             </div>
@@ -62,14 +62,16 @@ export default function ChatWidget() {
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
                 className="p-1 hover:bg-white/10 rounded transition-colors"
+                aria-label={isMinimized ? 'Expandir chat' : 'Minimizar chat'}
               >
-                {isMinimized ? <MessageCircle size={18} /> : <Minus size={18} />}
+                {isMinimized ? <MessageCircle size={18} aria-hidden="true" /> : <Minus size={18} aria-hidden="true" />}
               </button>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-1 hover:bg-white/10 rounded transition-colors"
+                aria-label="Cerrar chat"
               >
-                <X size={18} />
+                <X size={18} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -156,15 +158,17 @@ export default function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Escribe un mensaje..."
+                  aria-label="Escribe tu mensaje para Luz"
                   className="flex-1 px-4 py-3 bg-neutral-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 transition-all border-none disabled:opacity-60"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !input.trim()}
+                  aria-label="Enviar mensaje"
                   className="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm flex items-center justify-center"
                 >
-                  <Send className="w-5 h-5" />
+                  <Send className="w-5 h-5" aria-hidden="true" />
                 </button>
               </form>
             </>
@@ -176,13 +180,13 @@ export default function ChatWidget() {
         <button
           onClick={() => setIsOpen(true)}
           className="group relative flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 active:scale-95"
-          suppressHydrationWarning
+          aria-label="Abrir chat con asistente virtual Luz"
         >
-          <div className="absolute -top-2 -right-1 flex h-3 w-3">
+          <div className="absolute -top-2 -right-1 flex h-3 w-3" aria-hidden="true">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500" />
           </div>
-          <MessageCircle className="group-hover:rotate-12 transition-transform" size={28} />
+          <MessageCircle className="group-hover:rotate-12 transition-transform" size={28} aria-hidden="true" />
         </button>
       )}
     </div>
