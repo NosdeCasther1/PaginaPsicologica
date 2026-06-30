@@ -194,7 +194,7 @@ export const faqs: FAQ[] = [
 
 // Contact Information
 export const contactInfo = {
-    email: 'contacto@saludmental.com',
+    email: 'selahpsicologiagt@gmail.com',
     phone: '+502 51455816',
     whatsapp: '+50251455816',
     location: 'Ciudad de Huehuetenango, Guatemala',
