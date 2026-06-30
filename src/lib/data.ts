@@ -195,8 +195,8 @@ export const faqs: FAQ[] = [
 // Contact Information
 export const contactInfo = {
     email: 'contacto@saludmental.com',
-    phone: '+502 1234 5678',
-    whatsapp: '+5021234567',
+    phone: '+502 51455816',
+    whatsapp: '+50251455816',
     location: 'Ciudad de Huehuetenango, Guatemala',
     socialMedia: {
         facebook: '#',
