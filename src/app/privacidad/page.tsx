@@ -5,7 +5,7 @@ import { siteConfig } from '@/lib/config';
 export const metadata: Metadata = {
   title: 'Politica de Privacidad',
   description:
-    'Politica de privacidad de Selah sobre tratamiento de datos personales, datos de salud, citas online, proveedores y derechos de usuarios.',
+    'Politica de privacidad de Selah sobre datos personales, datos de salud, citas online en Guatemala y presenciales en Huehuetenango.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/privacidad`,
   },
@@ -19,7 +19,7 @@ const sections: LegalSection[] = [
   {
     title: '1. Responsable y alcance',
     body: [
-      'Selah presta servicios de orientacion, acompanamiento y terapia psicologica online desde Guatemala. Esta politica explica como se recolectan, usan, conservan y protegen los datos personales que las personas comparten al visitar el sitio, contactar por formularios, usar el chat, escribir por WhatsApp o agendar una cita.',
+      'Selah presta servicios de orientacion, acompanamiento y terapia psicologica online en toda Guatemala y presencial exclusivamente en Huehuetenango. Esta politica explica como se recolectan, usan, conservan y protegen los datos personales que las personas comparten al visitar el sitio, contactar por formularios, usar el chat, escribir por WhatsApp o agendar una cita.',
       'Para consultas sobre privacidad puedes escribir a selahpsicologiagt@gmail.com o al WhatsApp +502 5145 5816.',
     ],
   },
@@ -44,7 +44,7 @@ const sections: LegalSection[] = [
     items: [
       'Responder consultas y solicitudes de informacion.',
       'Agendar, confirmar, modificar o dar seguimiento a citas.',
-      'Prestar servicios de psicologia online y mantener registros necesarios para continuidad de atencion.',
+      'Prestar servicios de psicologia online en Guatemala o presencial en Huehuetenango y mantener registros necesarios para continuidad de atencion.',
       'Enviar recordatorios, confirmaciones, instrucciones de pago o informacion operativa sobre la sesion.',
       'Mejorar la seguridad, disponibilidad y funcionamiento del sitio web.',
       'Cumplir obligaciones legales, eticas, fiscales, contractuales o requerimientos validos de autoridad competente.',
@@ -116,7 +116,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Politica de Privacidad"
-      description="Como Selah recolecta, usa, conserva y protege datos personales y datos sensibles relacionados con la atencion psicologica online."
+      description="Como Selah recolecta, usa, conserva y protege datos personales y datos sensibles relacionados con la atencion psicologica online o presencial en Huehuetenango."
       updatedAt="30 de junio de 2026"
       sections={sections}
     />

@@ -93,7 +93,7 @@ export default function Image() {
               lineHeight: 1.4,
             }}
           >
-            Psicología online y presencial en Huehuetenango
+            Online en Guatemala · Presencial en Huehuetenango
           </div>
         </div>
 

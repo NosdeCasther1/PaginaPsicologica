@@ -5,7 +5,7 @@ import { siteConfig } from '@/lib/config';
 export const metadata: Metadata = {
   title: 'Aviso de Confidencialidad',
   description:
-    'Aviso de confidencialidad de Selah sobre reserva profesional, informacion de salud mental, sesiones online y excepciones legales o eticas.',
+    'Aviso de confidencialidad para sesiones online en Guatemala o presenciales en Huehuetenango y excepciones legales o eticas.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/confidencialidad`,
   },
@@ -81,7 +81,7 @@ export default function ConfidentialityPage() {
   return (
     <LegalPage
       title="Aviso de Confidencialidad"
-      description="Compromiso de Selah sobre reserva profesional, manejo de informacion sensible, sesiones online y limites legales o eticos de la confidencialidad."
+      description="Compromiso de Selah sobre reserva profesional, informacion sensible y sesiones online o presenciales en Huehuetenango."
       updatedAt="30 de junio de 2026"
       sections={sections}
     />

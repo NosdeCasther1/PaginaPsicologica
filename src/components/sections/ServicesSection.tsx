@@ -31,9 +31,9 @@ export default function ServicesSection() {
             </h2>
           </div>
           <p className="max-w-xl text-lg leading-8 text-slate-600 lg:justify-self-end">
-            Atención psicológica online y presencial en Huehuetenango. Los
-            talleres, conferencias y charlas se realizan presencialmente en
-            Huehuetenango.
+            Atención psicológica online en toda Guatemala y presencial
+            únicamente en Huehuetenango. Los talleres, conferencias y charlas
+            también se realizan presencialmente en Huehuetenango.
           </p>
         </div>
 

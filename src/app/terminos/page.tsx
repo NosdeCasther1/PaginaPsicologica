@@ -5,7 +5,7 @@ import { siteConfig } from '@/lib/config';
 export const metadata: Metadata = {
   title: 'Terminos y Condiciones',
   description:
-    'Terminos de uso del sitio web y servicios online de Selah, incluyendo citas, pagos, cancelaciones, limites del servicio y uso responsable.',
+    'Terminos de los servicios online en Guatemala y presenciales en Huehuetenango, incluyendo citas, pagos y cancelaciones.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/terminos`,
   },
@@ -21,7 +21,7 @@ const sections: LegalSection[] = [
   {
     title: '2. Naturaleza del servicio',
     body: [
-      'Selah ofrece servicios de psicologia, orientacion y acompanamiento online. La informacion publicada en el sitio tiene fines educativos e informativos y no sustituye una evaluacion profesional individualizada.',
+      'Selah ofrece servicios de psicologia, orientacion y acompanamiento online en toda Guatemala y presencial exclusivamente en Huehuetenango. Los talleres, conferencias y charlas se realizan presencialmente en Huehuetenango. La informacion publicada en el sitio tiene fines educativos e informativos y no sustituye una evaluacion profesional individualizada.',
       'El servicio online puede no ser adecuado para emergencias, crisis severas, riesgo suicida, violencia activa, condiciones medicas urgentes o situaciones que requieran intervencion presencial inmediata.',
     ],
   },
@@ -111,7 +111,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terminos y Condiciones"
-      description="Reglas de uso del sitio, agendamiento, pagos, limites del servicio online y responsabilidades de Selah y de las personas usuarias."
+      description="Reglas de uso del sitio, agendamiento, pagos y limites de la atencion online o presencial en Huehuetenango."
       updatedAt="30 de junio de 2026"
       sections={sections}
     />

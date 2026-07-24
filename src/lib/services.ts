@@ -27,9 +27,9 @@ export const servicePages: ServicePage[] = [
     slug: 'terapia-individual-adultos',
     shortTitle: 'Terapia individual',
     title: 'Terapia individual para adultos',
-    seoTitle: 'Terapia individual online y presencial en Huehuetenango',
+    seoTitle: 'Terapia individual online en Guatemala y presencial en Huehuetenango',
     metaDescription:
-      'Terapia psicológica individual online y presencial en Huehuetenango para trabajar ansiedad, estrés, autoestima, duelo y cambios vitales.',
+      'Terapia individual online en toda Guatemala y presencial exclusivamente en Huehuetenango para trabajar ansiedad, estrés, autoestima y duelo.',
     eyebrow: 'Acompañamiento individual',
     summary:
       'Un espacio confidencial para comprender lo que estás viviendo y desarrollar herramientas que puedas aplicar en tu vida cotidiana.',
@@ -84,9 +84,9 @@ export const servicePages: ServicePage[] = [
     slug: 'terapia-de-pareja',
     shortTitle: 'Terapia de pareja',
     title: 'Terapia de pareja',
-    seoTitle: 'Terapia de pareja online y presencial en Huehuetenango',
+    seoTitle: 'Terapia de pareja online en Guatemala y presencial en Huehuetenango',
     metaDescription:
-      'Terapia de pareja online y presencial en Huehuetenango para mejorar la comunicación, comprender conflictos y tomar decisiones con mayor claridad.',
+      'Terapia de pareja online en toda Guatemala y presencial exclusivamente en Huehuetenango para mejorar la comunicación y comprender conflictos.',
     eyebrow: 'Relaciones y vínculos',
     summary:
       'Un espacio guiado para escuchar lo que está ocurriendo en la relación y construir conversaciones más claras, respetuosas y útiles.',
@@ -143,9 +143,9 @@ export const servicePages: ServicePage[] = [
     slug: 'psicologia-infantil-adolescentes',
     shortTitle: 'Niñez y adolescencia',
     title: 'Psicología infantil y para adolescentes',
-    seoTitle: 'Psicología infantil online y presencial en Huehuetenango',
+    seoTitle: 'Psicología infantil online en Guatemala y presencial en Huehuetenango',
     metaDescription:
-      'Acompañamiento psicológico online y presencial en Huehuetenango para niños y adolescentes, con orientación a madres, padres y cuidadores.',
+      'Psicología infantil y adolescente online en toda Guatemala y presencial exclusivamente en Huehuetenango, con orientación a cuidadores.',
     eyebrow: 'Niñez, adolescencia y familia',
     summary:
       'Acompañamiento adaptado a cada etapa del desarrollo, integrando a la familia cuando es necesario y cuidando el ritmo de cada niño o adolescente.',
@@ -203,7 +203,7 @@ export const servicePages: ServicePage[] = [
     title: 'Manejo del estrés y bienestar para ejecutivos',
     seoTitle: 'Estrés ejecutivo: terapia online y en Huehuetenango',
     metaDescription:
-      'Acompañamiento psicológico online y presencial en Huehuetenango para ejecutivos y profesionales que enfrentan estrés, sobrecarga y burnout.',
+      'Acompañamiento psicológico online en toda Guatemala y presencial exclusivamente en Huehuetenango para ejecutivos ante estrés y burnout.',
     eyebrow: 'Bienestar profesional',
     summary:
       'Un proceso enfocado en manejar la presión, prevenir el desgaste y recuperar un equilibrio sostenible entre desempeño y bienestar.',
@@ -257,8 +257,8 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'talleres-y-grupos',
-    shortTitle: 'Talleres y grupos',
-    title: 'Talleres y grupos de bienestar emocional',
+    shortTitle: 'Talleres, conferencias y charlas',
+    title: 'Talleres, conferencias y charlas de bienestar emocional',
     seoTitle: 'Talleres y conferencias presenciales en Huehuetenango',
     metaDescription:
       'Talleres, conferencias y charlas presenciales en Huehuetenango sobre bienestar emocional, estrés, ansiedad, comunicación, crianza y habilidades personales.',
@@ -319,7 +319,7 @@ export const servicePages: ServicePage[] = [
     title: 'Acompañamiento psicológico para adultos mayores',
     seoTitle: 'Terapia para adultos mayores online y en Huehuetenango',
     metaDescription:
-      'Acompañamiento psicológico online y presencial en Huehuetenango para adultos mayores ante cambios vitales, duelo, soledad y adaptación familiar.',
+      'Acompañamiento psicológico online en toda Guatemala y presencial exclusivamente en Huehuetenango para adultos mayores ante cambios y duelo.',
     eyebrow: 'Bienestar en cada etapa',
     summary:
       'Un acompañamiento respetuoso para afrontar cambios, pérdidas y nuevas etapas, fortaleciendo autonomía, vínculos y calidad de vida.',

@@ -8,20 +8,20 @@ import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Charlas y Eventos',
-  description: 'Galería de charlas, conferencias y talleres de salud mental. Conoce nuestras participaciones en eventos de bienestar psicológico en Guatemala.',
+  description: 'Charlas, conferencias y talleres presenciales de salud mental en Huehuetenango.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/charlas`,
   },
   openGraph: {
     title: 'Charlas y Eventos | Selah',
-    description: 'Galería de charlas, conferencias y talleres de salud mental en Guatemala.',
+    description: 'Charlas, conferencias y talleres presenciales de salud mental en Huehuetenango.',
     url: `${siteConfig.baseUrl}/charlas`,
     images: [defaultOpenGraphImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Charlas y Eventos | Selah',
-    description: 'Galería de charlas, conferencias y talleres de salud mental en Guatemala.',
+    description: 'Charlas, conferencias y talleres presenciales de salud mental en Huehuetenango.',
     images: [defaultTwitterImage],
   },
 };
@@ -37,9 +37,10 @@ export default function CharlasPage() {
                             Galería de <span className="text-blue-600">Charlas y Eventos</span>
                         </h1>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            Explora los momentos más destacados de nuestras participaciones en eventos de salud mental, 
-                            conferencias y talleres comunitarios. Cada imagen representa nuestro compromiso con la 
-                            difusión de herramientas para el bienestar psicológico.
+                            Explora nuestras charlas, conferencias y talleres
+                            presenciales en Huehuetenango. Cada encuentro refleja
+                            nuestro compromiso con la difusión de herramientas
+                            para el bienestar psicológico.
                         </p>
                     </div>
                 </div>

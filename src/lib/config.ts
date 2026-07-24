@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Selah',
-  description: 'Terapia psicológica online y presencial exclusivamente en Huehuetenango. Atención profesional y humana para adultos, parejas, niños, adolescentes, familias y adultos mayores.',
+  description: 'Terapia psicológica online en toda Guatemala y presencial exclusivamente en Huehuetenango. Atención profesional y humana para adultos, parejas, niños, adolescentes, familias y adultos mayores.',
   baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://selah-gt.vercel.app',
   links: {
     // URL pública de Google Calendar Appointment Schedule para embeber / redirigir

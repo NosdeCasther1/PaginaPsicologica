@@ -17,8 +17,8 @@ export const benefits: Benefit[] = [
     },
     {
         id: 'online-attention',
-        title: 'Atención 100% Online',
-        description: 'La misma calidad clínica y calidez humana de una consulta presencial, pero adaptada a tu agenda y sin tiempos de traslado.',
+        title: 'Atención Online y Presencial',
+        description: 'Atención online en toda Guatemala y presencial exclusivamente en Huehuetenango, adaptada a tus necesidades.',
         icon: 'video',
     },
     {
@@ -100,8 +100,8 @@ export const services: Service[] = [
     },
     {
         id: 'workshops',
-        title: 'Talleres y Grupos',
-        description: 'Sesiones grupales sobre mindfulness, manejo de ansiedad, habilidades sociales y más. Aprende en comunidad.',
+        title: 'Talleres, Conferencias y Charlas',
+        description: 'Actividades presenciales en Huehuetenango sobre bienestar emocional, ansiedad, comunicación y más.',
         features: [
             'Temáticas variadas',
             'Grupos reducidos',
@@ -183,7 +183,7 @@ export const faqs: FAQ[] = [
     {
         id: 'how-to-schedule',
         question: '¿Cómo agendo mi primera cita?',
-        answer: 'Es muy sencillo. Puedes hacer clic en el botón "Reservar mi sesión online" que te llevará a nuestro calendario de Google donde podrás elegir el día y hora que mejor te convenga. También puedes contactarnos por WhatsApp para recibir asistencia personalizada en el proceso de agendamiento.',
+        answer: 'Es muy sencillo. Puedes hacer clic en el botón "Agendar una sesión" para elegir el día y hora que mejor te convenga. También puedes contactarnos por WhatsApp para indicar si buscas atención online en Guatemala o presencial en Huehuetenango.',
     },
     {
         id: 'confidentiality',

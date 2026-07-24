@@ -6,20 +6,20 @@ import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Agendar Cita',
-  description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti. Proceso 100% confidencial y seguro.',
+  description: 'Reserva atención psicológica online en toda Guatemala o presencial exclusivamente en Huehuetenango.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/agendar`,
   },
   openGraph: {
     title: 'Agendar Cita | Selah',
-    description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
+    description: 'Atención online en toda Guatemala y presencial en Huehuetenango.',
     url: `${siteConfig.baseUrl}/agendar`,
     images: [defaultOpenGraphImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Agendar Cita | Selah',
-    description: 'Reserva tu sesión de terapia online en minutos. Elige el horario que mejor se adapte a ti.',
+    description: 'Atención online en toda Guatemala y presencial en Huehuetenango.',
     images: [defaultTwitterImage],
   },
 };
@@ -39,7 +39,8 @@ export default function AgendarPage() {
           </h1>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             Elige una fecha y hora en el calendario a continuación para reservar tu espacio.
-            Todo el proceso es 100% confidencial y seguro.
+            La atención online está disponible en toda Guatemala. La modalidad
+            presencial se ofrece exclusivamente en Huehuetenango.
           </p>
         </div>
 

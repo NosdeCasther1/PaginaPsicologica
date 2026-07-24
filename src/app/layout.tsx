@@ -24,11 +24,11 @@ const BASE_URL = siteConfig.baseUrl;
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Psicología online y presencial en Huehuetenango | Selah',
+    default: 'Psicología online en Guatemala y presencial en Huehuetenango | Selah',
     template: '%s | Selah',
   },
   description:
-    'Terapia psicológica online y presencial exclusivamente en Huehuetenango para adultos, parejas, niños, adolescentes y familias.',
+    'Terapia psicológica online en toda Guatemala y presencial exclusivamente en Huehuetenango para adultos, parejas, niños, adolescentes y familias.',
   keywords: [
     'terapia psicológica online',
     'psicología online Guatemala',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Psicología online y presencial en Huehuetenango | Selah',
+    title: 'Psicología online en Guatemala y presencial en Huehuetenango | Selah',
     description:
       'Acompañamiento psicológico profesional, humano y confidencial para cada etapa de la vida.',
     url: BASE_URL,
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Psicología online y presencial en Huehuetenango | Selah',
+    title: 'Psicología online en Guatemala y presencial en Huehuetenango | Selah',
     description:
       'Acompañamiento psicológico profesional, humano y confidencial.',
     images: ['/opengraph-image'],

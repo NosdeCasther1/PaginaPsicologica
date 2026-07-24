@@ -5,9 +5,9 @@ import { servicePages } from '@/lib/services';
 import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Servicios de terapia psicológica online',
+  title: 'Servicios de terapia psicológica',
   description:
-    'Conoce los servicios de terapia psicológica online de Selah para adultos, parejas, niños, adolescentes, ejecutivos, grupos y adultos mayores.',
+    'Terapia psicológica online en toda Guatemala y presencial en Huehuetenango. Talleres, conferencias y charlas presenciales en Huehuetenango.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/servicios`,
   },
@@ -23,8 +23,8 @@ export default function ServicesPage() {
             Acompañamiento psicológico para cada etapa de la vida.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-            Atención 100% online desde Guatemala, con un proceso confidencial,
-            humano y adaptado a las necesidades de cada persona.
+            Atención online disponible en toda Guatemala y atención presencial
+            únicamente en Huehuetenango, con un proceso confidencial y humano.
           </p>
         </div>
 

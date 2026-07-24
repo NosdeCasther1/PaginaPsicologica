@@ -67,18 +67,58 @@ export default async function ServicePage({ params }: Props) {
         provider: {
           '@id': `${siteConfig.baseUrl}/#organization`,
         },
-        areaServed: {
-          '@type': 'Country',
-          name: 'Guatemala',
-        },
-        availableChannel: {
-          '@type': 'ServiceChannel',
-          serviceUrl: `${siteConfig.baseUrl}/agendar`,
-          serviceLocation: {
-            '@type': 'VirtualLocation',
-            url: `${siteConfig.baseUrl}/agendar`,
-          },
-        },
+        areaServed:
+          service.deliveryMode === 'in-person'
+            ? {
+                '@type': 'City',
+                name: 'Huehuetenango',
+              }
+            : [
+                {
+                  '@type': 'Country',
+                  name: 'Guatemala',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Huehuetenango',
+                },
+              ],
+        availableChannel:
+          service.deliveryMode === 'in-person'
+            ? {
+                '@type': 'ServiceChannel',
+                serviceLocation: {
+                  '@type': 'Place',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Huehuetenango',
+                    addressRegion: 'Huehuetenango',
+                    addressCountry: 'GT',
+                  },
+                },
+              }
+            : [
+                {
+                  '@type': 'ServiceChannel',
+                  serviceUrl: `${siteConfig.baseUrl}/agendar`,
+                  serviceLocation: {
+                    '@type': 'VirtualLocation',
+                    url: `${siteConfig.baseUrl}/agendar`,
+                  },
+                },
+                {
+                  '@type': 'ServiceChannel',
+                  serviceLocation: {
+                    '@type': 'Place',
+                    address: {
+                      '@type': 'PostalAddress',
+                      addressLocality: 'Huehuetenango',
+                      addressRegion: 'Huehuetenango',
+                      addressCountry: 'GT',
+                    },
+                  },
+                },
+              ],
       },
       {
         '@type': 'BreadcrumbList',
@@ -155,11 +195,14 @@ export default async function ServicePage({ params }: Props) {
             <div className="border-l-2 border-teal-500 pl-6">
               <ShieldCheck className="h-6 w-6 text-teal-600" />
               <p className="mt-4 font-serif text-2xl text-slate-900">
-                Atención confidencial y 100% online
+                {service.deliveryMode === 'in-person'
+                  ? 'Actividad presencial en Huehuetenango'
+                  : 'Online en toda Guatemala · Presencial en Huehuetenango'}
               </p>
               <p className="mt-3 leading-7 text-slate-600">
-                Puedes conectarte desde un espacio privado, sin traslados y con
-                acompañamiento desde Guatemala.
+                {service.deliveryMode === 'in-person'
+                  ? 'Los talleres, conferencias y charlas se coordinan y realizan presencialmente en Huehuetenango.'
+                  : 'La atención online está disponible en toda Guatemala. La modalidad presencial se ofrece únicamente en Huehuetenango.'}
               </p>
             </div>
           </div>

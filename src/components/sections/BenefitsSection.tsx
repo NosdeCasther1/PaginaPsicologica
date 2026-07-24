@@ -8,7 +8,7 @@ const benefits = [
   },
   {
     title: 'Modalidad flexible',
-    description: 'Atención online y presencial exclusivamente en Huehuetenango.',
+    description: 'Atención online en toda Guatemala y presencial solo en Huehuetenango.',
     icon: Video,
   },
   {

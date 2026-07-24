@@ -7,20 +7,20 @@ import { defaultOpenGraphImage, defaultTwitterImage } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Contacto y Reservas',
-  description: 'Contáctanos y reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala y modalidad online.',
+  description: 'Reserva atención psicológica online en toda Guatemala o presencial exclusivamente en Huehuetenango.',
   alternates: {
     canonical: `${siteConfig.baseUrl}/contacto`,
   },
   openGraph: {
     title: 'Contacto y Reservas | Selah',
-    description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
+    description: 'Atención online en toda Guatemala y presencial en Huehuetenango.',
     url: `${siteConfig.baseUrl}/contacto`,
     images: [defaultOpenGraphImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contacto y Reservas | Selah',
-    description: 'Reserva tu primera sesión de terapia online. Atención psicológica profesional en Guatemala.',
+    description: 'Atención online en toda Guatemala y presencial en Huehuetenango.',
     images: [defaultTwitterImage],
   },
 };
@@ -37,7 +37,9 @@ export default function ContactoPage() {
             Reserva tu Primera Sesión
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Elige el horario que mejor se adapte a tus necesidades. La sesión se realizará vía Google Meet de forma totalmente privada y segura.
+            Elige el horario que mejor se adapte a tus necesidades. Puedes
+            solicitar atención online desde cualquier departamento de Guatemala
+            o presencial únicamente en Huehuetenango.
           </p>
         </div>
 
@@ -78,7 +80,7 @@ export default function ContactoPage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 opacity-80" />
-                  <span>Consulta Online / CDMX</span>
+                  <span>Online en Guatemala / Presencial en Huehuetenango</span>
                 </div>
               </div>
             </div>

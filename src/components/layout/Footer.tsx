@@ -23,8 +23,8 @@ export default function Footer() {
               <span className="font-serif text-3xl">Selah</span>
             </Link>
             <p className="mt-5 max-w-sm leading-7 text-slate-300">
-              Acompañamiento psicológico profesional y humano, online y
-              presencial exclusivamente en Huehuetenango.
+              Atención psicológica online en toda Guatemala y presencial
+              únicamente en Huehuetenango.
             </p>
             <a
               href={contactInfo.socialMedia.facebook}
