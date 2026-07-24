@@ -61,9 +61,63 @@ export default async function ArticlePage({ params }: Props) {
   const relatedArticles = articles
     .filter((item) => item.slug !== article.slug)
     .slice(0, 3);
+  const canonical = `${siteConfig.baseUrl}/articulos/${article.slug}`;
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${canonical}#article`,
+        headline: article.title,
+        description: article.excerpt,
+        image: article.image.startsWith('http')
+          ? article.image
+          : `${siteConfig.baseUrl}${article.image}`,
+        datePublished: article.publishedAt,
+        dateModified: article.publishedAt,
+        inLanguage: 'es-GT',
+        mainEntityOfPage: canonical,
+        author: {
+          '@type': 'Organization',
+          name: 'Selah Psicología',
+          url: siteConfig.baseUrl,
+        },
+        publisher: {
+          '@id': `${siteConfig.baseUrl}/#organization`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Inicio',
+            item: siteConfig.baseUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Artículos',
+            item: `${siteConfig.baseUrl}/articulos`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: article.title,
+            item: canonical,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <main className="min-h-screen bg-gray-50 pt-28 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <article>
         <header className="bg-white border-b border-gray-100">
           <div className="max-w-4xl mx-auto px-6 py-10">

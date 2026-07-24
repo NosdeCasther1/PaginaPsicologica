@@ -1,73 +1,80 @@
-'use client';
-
-import React, { useState } from 'react';
-import Card from '../ui/Card';
-import Button from '../ui/Button';
-import { services } from '@/lib/data';
-import { User, Check } from 'lucide-react';
-import { siteConfig } from '@/lib/config';
 import Link from 'next/link';
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  HeartHandshake,
+  Presentation,
+  Sprout,
+  User,
+  Users,
+} from 'lucide-react';
+import { servicePages } from '@/lib/services';
+
+const iconMap = {
+  user: User,
+  couple: HeartHandshake,
+  child: Sprout,
+  briefcase: BriefcaseBusiness,
+  group: Presentation,
+  senior: Users,
+};
 
 export default function ServicesSection() {
+  return (
+    <section id="servicios" className="bg-sky-50/70 py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+          <div>
+            <p className="premium-kicker">Servicios</p>
+            <h2 className="premium-title mt-5 max-w-3xl text-4xl sm:text-5xl">
+              Acompañamiento psicológico para cada etapa de tu vida.
+            </h2>
+          </div>
+          <p className="max-w-xl text-lg leading-8 text-slate-600 lg:justify-self-end">
+            Atención psicológica online y presencial en Huehuetenango. Los
+            talleres, conferencias y charlas se realizan presencialmente en
+            Huehuetenango.
+          </p>
+        </div>
 
-    return (
-        <section id="servicios" className="py-20 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
-                        Servicios
-                    </span>
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                        Terapia adaptada a{' '}
-                        <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                            tus necesidades
-                        </span>
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Todos nuestros servicios se realizan 100% online mediante videollamada segura.
-                    </p>
+        <div className="mt-16 divide-y divide-slate-300 border-y border-slate-300">
+          {servicePages.map((service, index) => {
+            const Icon = iconMap[service.icon];
+            return (
+              <Link
+                key={service.slug}
+                href={`/servicios/${service.slug}`}
+                className="group grid gap-5 py-8 transition-colors hover:bg-white/80 sm:grid-cols-[72px_1fr_auto] sm:items-center sm:px-6"
+              >
+                <div className="flex h-12 w-12 items-center justify-center border border-teal-300 text-teal-700">
+                  <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service) => (
-                        <Card key={service.id} featured={service.featured} className="flex flex-col">
-                            {service.featured && (
-                                <div className="absolute -top-3 right-6 px-3 py-1 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-xs font-bold rounded-full shadow-lg">
-                                    Más Solicitado
-                                </div>
-                            )}
-
-                            <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-blue-100 to-teal-100 flex items-center justify-center">
-                                <User className="w-8 h-8 text-blue-600" />
-                            </div>
-
-                            <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                            <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-
-                            <ul className="space-y-2 mb-6">
-                                {service.features.map((feature, index) => (
-                                    <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
-                                        <Check className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" />
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <Link href="/agendar" className="w-full">
-                                <Button
-                                    variant="primary"
-                                    size="sm"
-                                    className="w-full"
-                                >
-                                    Agendar Sesión
-                                </Button>
-                            </Link>
-                        </Card>
-                    ))}
+                <div>
+                  <p className="text-xs font-bold tracking-[0.18em] text-teal-700">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl text-slate-900 sm:text-3xl">
+                    {service.shortTitle}
+                  </h3>
+                  <p className="mt-2 max-w-2xl leading-7 text-slate-600">
+                    {service.summary}
+                  </p>
                 </div>
-            </div>
+                <span className="inline-flex items-center gap-2 font-semibold text-teal-700">
+                  Ver servicio
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
 
-        </section>
-    );
+        <div className="mt-10 text-center">
+          <Link href="/servicios" className="premium-button-secondary">
+            Ver todos los servicios
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }
-

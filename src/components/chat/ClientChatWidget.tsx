@@ -1,13 +1,20 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 
-// Carga diferida del ChatWidget solo en el cliente, sin bloquear el renderizado inicial
 const ChatWidget = dynamic(() => import('@/components/chat/ChatWidget'), {
-    ssr: false,
-    loading: () => null,
+  ssr: false,
+  loading: () => null,
 });
 
 export default function ClientChatWidget() {
-    return <ChatWidget />;
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsReady(true), 3500);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  return isReady ? <ChatWidget /> : null;
 }

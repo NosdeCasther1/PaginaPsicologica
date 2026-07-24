@@ -199,9 +199,7 @@ export const contactInfo = {
     whatsapp: '+50251455816',
     location: 'Ciudad de Huehuetenango, Guatemala',
     socialMedia: {
-        facebook: '#',
-        instagram: '#',
-        linkedin: '#',
+        facebook: 'https://www.facebook.com/SelahPsicologiaGt',
     },
 };
 

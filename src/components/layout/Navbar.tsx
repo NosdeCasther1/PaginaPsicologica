@@ -1,177 +1,120 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
 const navLinks = [
-    { href: '/', label: 'Inicio' },
-    { href: '/#nosotros', label: 'Nosotros' },
-    { href: '/#servicios', label: 'Servicios' },
-    { href: '/#recursos', label: 'Recursos' },
-    { href: '/charlas', label: 'Charlas' },
-    { href: '/#faq', label: 'FAQ' },
-    { href: '/#contacto', label: 'Contacto' },
+  { href: '/', label: 'Inicio' },
+  { href: '/#nosotros', label: 'Enfoque' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/recursos', label: 'Recursos' },
+  { href: '/articulos', label: 'Artículos' },
+  { href: '/contacto', label: 'Contacto' },
 ];
 
 export default function Navbar() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('inicio');
-    const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  return (
+    <nav
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200',
+        isScrolled
+          ? 'border-slate-200 bg-white/95 backdrop-blur-xl'
+          : 'border-transparent bg-white/90 backdrop-blur-md',
+      )}
+      aria-label="Navegación principal"
+    >
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+        <Link href="/" className="flex items-center gap-3" aria-label="Selah, página de inicio">
+          <Image
+            src="/images/selah-mark.webp"
+            alt=""
+            width={48}
+            height={48}
+            priority
+            className="h-11 w-11 rounded-full object-cover"
+          />
+          <span className="font-serif text-2xl text-slate-900">Selah</span>
+        </Link>
 
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        // Manejo de enlaces con ancla (hashes)
-        if (href.includes('#')) {
-            const [path, hash] = href.split('#');
-            
-            // Si ya estamos en la página de destino (el path coincide con el pathname actual)
-            if (pathname === path || (path === '/' && pathname === '/')) {
-                const element = document.getElementById(hash);
-                if (element) {
-                    e.preventDefault();
-                    element.scrollIntoView({ behavior: 'smooth' });
-                    setIsMobileMenuOpen(false);
-                    setActiveSection(hash);
-                }
-            }
-            // Si no estamos en la página, dejamos que Next.js maneje la navegación normal
-        } else if (href === '/' && pathname === '/') {
-            // Scroll al inicio si ya estamos en home
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setIsMobileMenuOpen(false);
-            setActiveSection('inicio');
-        }
-    };
+        <div className="hidden items-center gap-7 lg:flex">
+          {navLinks.map((link) => {
+            const basePath = link.href.split('#')[0];
+            const isActive =
+              link.href === '/'
+                ? pathname === '/'
+                : basePath !== '/' && pathname.startsWith(basePath);
 
-    return (
-        <>
-            <nav
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
                 className={cn(
-                    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-                    isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white/90 backdrop-blur-sm shadow-sm'
+                  'text-sm font-medium transition-colors',
+                  isActive ? 'text-teal-700' : 'text-slate-600 hover:text-slate-950',
                 )}
-                aria-label="Navegación principal"
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="hidden lg:block">
+          <Link href="/agendar" className="premium-button min-h-11 px-5 py-2 text-sm">
+            Agendar sesión
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center text-slate-800 lg:hidden"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+        >
+          {isMobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+      </div>
+
+      {isMobileMenuOpen && (
+        <div id="mobile-navigation" className="border-t border-slate-200 bg-white lg:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col px-6 py-5">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="border-b border-slate-100 py-3 font-medium text-slate-700"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/agendar"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="premium-button mt-5 w-full"
             >
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex items-center justify-between h-20">
-                        {/* Logo */}
-                        <Link href="/" className="flex items-center gap-3">
-                            <Image
-                                src="/images/selah-mark.webp"
-                                alt="Selah Psicología y Crecimiento Interior"
-                                width={48}
-                                height={48}
-                                priority
-                                className="h-11 w-11 rounded-full object-cover ring-1 ring-teal-100"
-                            />
-                            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                                Selah
-                            </span>
-                        </Link>
-
-                        {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-8">
-                            {navLinks.map((link) => {
-                                const isActive = (link.href === '/' && activeSection === 'inicio' && pathname === '/') || 
-                                               (link.href.includes('#') && activeSection === link.href.split('#')[1] && pathname === '/') ||
-                                               (pathname === link.href);
-                                
-                                return (
-                                    <Link
-                                        key={link.href}
-                                        href={link.href}
-                                        onClick={(e) => handleNavClick(e, link.href)}
-                                        className={cn(
-                                            'text-sm font-medium transition-colors relative',
-                                            isActive
-                                                ? 'text-blue-600'
-                                                : 'text-gray-600 hover:text-blue-600'
-                                        )}
-                                    >
-                                        {link.label}
-                                        {isActive && (
-                                            <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-teal-500" />
-                                        )}
-                                    </Link>
-                                );
-                            })}
-                        </div>
-
-                        {/* CTA Button */}
-                        <div className="hidden md:block">
-                            <Link
-                                href="/agendar"
-                                className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm rounded-full font-semibold bg-gradient-to-r from-blue-500 to-teal-500 text-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-[44px]"
-                            >
-                                Agendar Cita
-                            </Link>
-                        </div>
-
-                        {/* Mobile Menu Button */}
-                        <button
-                            className="md:hidden p-2"
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            aria-label="Toggle menu"
-                        >
-                            <div className="w-6 h-5 flex flex-col justify-between">
-                                <span className={cn('h-0.5 bg-gray-800 transition-all', isMobileMenuOpen && 'rotate-45 translate-y-2')} />
-                                <span className={cn('h-0.5 bg-gray-800 transition-all', isMobileMenuOpen && 'opacity-0')} />
-                                <span className={cn('h-0.5 bg-gray-800 transition-all', isMobileMenuOpen && '-rotate-45 -translate-y-2')} />
-                            </div>
-                        </button>
-                    </div>
-
-                    {/* Mobile Menu */}
-                    {isMobileMenuOpen && (
-                        <div className="md:hidden py-4 border-t border-gray-200">
-                            <div className="flex flex-col gap-4">
-                                {navLinks.map((link) => {
-                                    const isActive = (link.href === '/' && activeSection === 'inicio' && pathname === '/') || 
-                                                   (link.href.includes('#') && activeSection === link.href.split('#')[1] && pathname === '/') ||
-                                                   (pathname === link.href);
-
-                                    return (
-                                        <Link
-                                            key={link.href}
-                                            href={link.href}
-                                            onClick={(e) => handleNavClick(e, link.href)}
-                                            className={cn(
-                                                'text-base font-medium transition-colors',
-                                                isActive
-                                                    ? 'text-blue-600'
-                                                    : 'text-gray-600'
-                                            )}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    );
-                                })}
-                                <Link
-                                    href="/agendar"
-                                    className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm rounded-full font-semibold bg-gradient-to-r from-blue-500 to-teal-500 text-white hover:shadow-lg transition-all duration-300 w-full min-h-[44px]"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    Agendar Cita
-                                </Link>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </nav>
-
-        </>
-    );
+              Agendar sesión
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 }
-

@@ -93,7 +93,7 @@ export default function Image() {
               lineHeight: 1.4,
             }}
           >
-            Terapia psicológica profesional 100% online
+            Psicología online y presencial en Huehuetenango
           </div>
         </div>
 

@@ -1,74 +1,61 @@
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Card from '../ui/Card';
+import { ArrowRight } from 'lucide-react';
 import { articles } from '@/lib/articles';
 
 export default function ResourcesSection() {
-    const featuredArticles = articles.slice(0, 3);
+  const featuredArticles = articles.slice(0, 3);
 
-    return (
-        <section id="recursos" className="py-20 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
-                        Recursos
-                    </span>
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                        Artículos sobre{' '}
-                        <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                            salud mental
-                        </span>
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Información práctica, responsable y basada en fuentes confiables para tu bienestar emocional.
-                    </p>
+  return (
+    <section id="recursos" className="bg-sky-50/70 py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="premium-kicker">Recursos para tu bienestar</p>
+            <h2 className="premium-title mt-5 max-w-3xl text-4xl sm:text-5xl">
+              Información para comprenderte y tomar decisiones con más claridad.
+            </h2>
+          </div>
+          <Link
+            href="/articulos"
+            className="inline-flex shrink-0 items-center gap-2 font-bold text-teal-700"
+          >
+            Ver todos los artículos
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="mt-14 grid gap-9 lg:grid-cols-3">
+          {featuredArticles.map((article, index) => (
+            <article key={article.slug} className={index === 0 ? 'lg:col-span-1' : ''}>
+              <Link href={`/articulos/${article.slug}`} className="group block">
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {featuredArticles.map((article) => (
-                        <Card key={article.slug} className="p-0 overflow-hidden">
-                            <div className="relative h-48">
-                                <Image
-                                    src={article.image}
-                                    alt={article.title}
-                                    fill
-                                    className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-                                />
-                                <div className="absolute top-4 left-4 px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-xs font-semibold text-blue-600">
-                                    {article.category}
-                                </div>
-                            </div>
-
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold mb-3">{article.title}</h3>
-                                <p className="text-gray-600 mb-4">{article.excerpt}</p>
-
-                                <div className="flex items-center justify-between">
-                                    <span className="text-sm text-gray-500">📖 {article.readTime}</span>
-                                    <Link
-                                        href={`/articulos/${article.slug}`}
-                                        className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-                                        aria-label={`Leer artículo: ${article.title}`}
-                                    >
-                                        Leer más →
-                                    </Link>
-                                </div>
-                            </div>
-                        </Card>
-                    ))}
-                </div>
-
-                <div className="mt-10 text-center">
-                    <Link
-                        href="/articulos"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white border border-blue-100 text-blue-600 font-semibold hover:bg-blue-50 transition-colors shadow-sm"
-                    >
-                        Ver todos los artículos
-                    </Link>
-                </div>
-            </div>
-        </section>
-    );
+                <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-teal-700">
+                  {article.category} · {article.readTime}
+                </p>
+                <h3 className="mt-3 font-serif text-2xl leading-tight text-slate-900">
+                  {article.title}
+                </h3>
+                <p className="mt-3 line-clamp-3 leading-7 text-slate-600">
+                  {article.excerpt}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-teal-700">
+                  Leer artículo
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

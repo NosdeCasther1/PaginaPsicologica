@@ -1,65 +1,60 @@
-import React from 'react';
 import Image from 'next/image';
-import { philosophyCards } from '@/lib/data';
-import Card from '../ui/Card';
-import { Heart, Target, Award } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Check } from 'lucide-react';
 
-const iconMap: Record<string, React.ReactNode> = {
-    heart: <Heart className="w-12 h-12" />,
-    target: <Target className="w-12 h-12" />,
-    award: <Award className="w-12 h-12" />,
-};
+const principles = [
+  'Escucha respetuosa y sin juicios',
+  'Objetivos terapéuticos claros',
+  'Herramientas aplicables a la vida cotidiana',
+  'Seguimiento adaptado a cada proceso',
+];
 
 export default function AboutSection() {
-    return (
-        <section id="nosotros" className="py-20 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
-                        Sobre Nosotros
-                    </span>
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                        Ciencia y empatía al servicio de tu{' '}
-                        <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                            bienestar
-                        </span>
-                    </h2>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        En Selah, entendemos la psicología no solo como una disciplina clínica, sino como un encuentro humano transformador.
-                    </p>
-                </div>
+  return (
+    <section id="nosotros" className="bg-white py-24 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+        <div className="relative min-h-[480px] overflow-hidden bg-sky-50 lg:min-h-[620px]">
+          <Image
+            src="/images/team-image.jpg"
+            alt="Espacio profesional para acompañamiento psicológico"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 46vw"
+          />
+        </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                    <div className="relative">
-                        <div className="relative rounded-3xl overflow-hidden shadow-xl">
-                            <Image
-                                src="/images/team-image.jpg"
-                                alt="Equipo de psicólogos profesionales"
-                                width={600}
-                                height={700}
-                                className="w-full h-auto"
-                            />
-                        </div>
-                        <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-blue-500/30 rounded-3xl -z-10" />
-                    </div>
+        <div className="lg:pl-10">
+          <p className="premium-kicker">El enfoque de Selah</p>
+          <h2 className="premium-title mt-5 text-4xl sm:text-5xl">
+            Psicología profesional con calidez humana.
+          </h2>
+          <p className="mt-7 text-lg leading-8 text-slate-600">
+            En Selah entendemos la terapia como un proceso colaborativo. No se
+            trata solo de hablar sobre lo que duele, sino de comprenderlo,
+            reconocer tus recursos y construir cambios que tengan sentido para ti.
+          </p>
+          <p className="mt-5 leading-7 text-slate-600">
+            Trabajamos desde una mirada humana y orientada a soluciones, cuidando
+            la privacidad, el ritmo y la singularidad de cada persona.
+          </p>
 
-                    <div className="space-y-6">
-                        {philosophyCards.map((card) => (
-                            <Card key={card.id} hover={true}>
-                                <div className="flex gap-4">
-                                    <div className="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-blue-100 to-teal-100 flex items-center justify-center text-blue-600">
-                                        {iconMap[card.icon]}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-                                        <p className="text-gray-600 leading-relaxed">{card.description}</p>
-                                    </div>
-                                </div>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+          <ul className="mt-9 grid gap-4 sm:grid-cols-2">
+            {principles.map((principle) => (
+              <li key={principle} className="flex gap-3 border-t border-slate-200 pt-4">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" aria-hidden="true" />
+                <span className="text-sm font-medium leading-6 text-slate-700">
+                  {principle}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <Link href="/servicios" className="mt-10 inline-flex items-center gap-2 font-bold text-teal-700">
+            Conocer nuestros servicios
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }

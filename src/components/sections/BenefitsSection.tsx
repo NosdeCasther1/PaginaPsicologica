@@ -1,36 +1,42 @@
-import React from 'react';
-import Card from '../ui/Card';
-import { benefits } from '@/lib/data';
-import { Clock, Video, Users } from 'lucide-react';
+import { ShieldCheck, Sparkles, Video } from 'lucide-react';
 
-const iconMap: Record<string, React.ReactNode> = {
-    clock: <Clock className="w-14 h-14" />,
-    video: <Video className="w-14 h-14" />,
-    users: <Users className="w-14 h-14" />,
-};
+const benefits = [
+  {
+    title: 'Confidencialidad',
+    description: 'Un espacio privado y respetuoso para hablar con libertad.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Modalidad flexible',
+    description: 'Atención online y presencial exclusivamente en Huehuetenango.',
+    icon: Video,
+  },
+  {
+    title: 'Proceso personalizado',
+    description: 'Objetivos y herramientas adaptados a lo que necesitas.',
+    icon: Sparkles,
+  },
+];
 
 export default function BenefitsSection() {
-    return (
-        <section className="py-20 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                        ¿Por qué <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">elegirnos?</span>
-                    </h2>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {benefits.map((benefit) => (
-                        <Card key={benefit.id} className="text-center">
-                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-100 to-teal-100 flex items-center justify-center text-blue-600">
-                                {iconMap[benefit.icon]}
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                            <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
-                        </Card>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="bg-slate-950 text-white">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+          <h2 className="font-serif text-3xl leading-tight sm:text-4xl">
+            Tu bienestar emocional merece atención, tiempo y un espacio seguro.
+          </h2>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {benefits.map(({ title, description, icon: Icon }) => (
+              <div key={title} className="border-t border-slate-700 pt-5">
+                <Icon className="h-6 w-6 text-teal-300" aria-hidden="true" />
+                <h3 className="mt-5 font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

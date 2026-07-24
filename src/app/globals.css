@@ -1,18 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary-blue: #6B9FD8;
-    --color-primary-green: #8FB8A8;
-    --color-sage-green: #A8C5B5;
-    --color-warm-beige: #F5F1ED;
+    --color-brand-navy: #063b5c;
+    --color-brand-blue: #0b6f98;
+    --color-brand-teal: #0aa6ad;
+    --color-brand-mist: #eff9fb;
+    --font-sans: var(--font-inter);
+    --font-serif: var(--font-playfair);
+}
 
-    --radius-2xl: 1rem;
-    --radius-3xl: 1.5rem;
+:root {
+    --brand-navy: #063b5c;
+    --brand-blue: #0b6f98;
+    --brand-teal: #0aa6ad;
+    --brand-mist: #eff9fb;
+}
+
+* {
+    border-color: #e2e8f0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: white;
-    color: #111827;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: #99f6e4;
+    color: #083344;
 }
 
 svg {
@@ -20,71 +41,97 @@ svg {
     height: auto;
 }
 
-@layer utilities {
-
-    /* Custom animations */
-    @keyframes float {
-
-        0%,
-        100% {
-            transform: translateY(0px);
-        }
-
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    @keyframes float-delayed {
-
-        0%,
-        100% {
-            transform: translateY(0px);
-        }
-
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    .animate-float {
-        animation: float 3s ease-in-out infinite;
-    }
-
-    .animate-float-delayed {
-        animation: float-delayed 3s ease-in-out infinite;
-        animation-delay: 1.5s;
-    }
-
-    /* Smooth scroll */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, var(--primary-blue), var(--primary-green));
-        border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, #5a8fc7, #7ea797);
-    }
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Font variables */
-.font-sans {
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+:focus-visible {
+    outline: 3px solid rgba(10, 166, 173, 0.32);
+    outline-offset: 3px;
 }
 
-.font-serif {
+.font-serif,
+.premium-title {
     font-family: var(--font-playfair), Georgia, serif;
+}
+
+.premium-title {
+    color: #0f2f47;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+}
+
+.premium-kicker {
+    color: #0f8f99;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.premium-button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #0798a2;
+    padding: 0.75rem 1.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.premium-button:hover {
+    background: #087d88;
+    transform: translateY(-1px);
+}
+
+.premium-button-secondary {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    padding: 0.75rem 1.5rem;
+    color: #163b55;
+    font-weight: 700;
+    transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.premium-button-secondary:hover {
+    border-color: #0aa6ad;
+    background: #f0fdfa;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid #f1f5f9;
+    border-radius: 999px;
+    background: #0aa6ad;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

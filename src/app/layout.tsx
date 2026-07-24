@@ -8,135 +8,168 @@ import ClientChatWidget from '@/components/chat/ClientChatWidget';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({
-    subsets: ['latin'],
-    display: 'swap',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 });
 
 const playfair = Playfair_Display({
-    subsets: ['latin'],
-    display: 'swap',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
 });
 
 const BASE_URL = siteConfig.baseUrl;
 
 export const metadata: Metadata = {
-    metadataBase: new URL(BASE_URL),
-    title: {
-        default: 'Selah | Terapia Online Profesional',
-        template: '%s | Selah',
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'Psicología online y presencial en Huehuetenango | Selah',
+    template: '%s | Selah',
+  },
+  description:
+    'Terapia psicológica online y presencial exclusivamente en Huehuetenango para adultos, parejas, niños, adolescentes y familias.',
+  keywords: [
+    'terapia psicológica online',
+    'psicología online Guatemala',
+    'psicólogo presencial Huehuetenango',
+    'psicólogo Huehuetenango',
+    'terapia de pareja online',
+    'psicología infantil',
+    'salud mental',
+  ],
+  authors: [{ name: 'Selah Psicología' }],
+  creator: 'Selah Psicología',
+  publisher: 'Selah Psicología',
+  category: 'Salud mental',
+  icons: {
+    icon: '/images/selah-logo.png',
+    apple: '/images/selah-logo.png',
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: 'Psicología online y presencial en Huehuetenango | Selah',
+    description:
+      'Acompañamiento psicológico profesional, humano y confidencial para cada etapa de la vida.',
+    url: BASE_URL,
+    siteName: 'Selah Psicología',
+    locale: 'es_GT',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Selah Psicología y Crecimiento Interior',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Psicología online y presencial en Huehuetenango | Selah',
+    description:
+      'Acompañamiento psicológico profesional, humano y confidencial.',
+    images: ['/opengraph-image'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
-    description: 'Psicología y terapia online en Huehuetenango, Guatemala. Atención profesional para niños, adolescentes, parejas y adultos. Mejora tu bienestar mental hoy.',
-    keywords: ['psicología', 'terapia online', 'Huehuetenango', 'salud mental', 'psicólogo Guatemala', 'terapia de pareja', 'terapia infantil'],
-    authors: [{ name: 'Selah' }],
-    creator: 'Selah',
-    publisher: 'Selah',
-    icons: {
-        icon: '/images/selah-logo.png',
-        apple: '/images/selah-logo.png',
-    },
-    alternates: {
-        canonical: BASE_URL,
-    },
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-    },
-    openGraph: {
-        title: 'Selah | Terapia Online Profesional',
-        description: 'Atención psicológica profesional y cálida en Huehuetenango y modalidad online. Tu bienestar es nuestra prioridad.',
-        url: BASE_URL,
-        siteName: 'Selah',
-        locale: 'es_GT',
-        type: 'website',
-        images: [
-            {
-                url: '/opengraph-image',
-                width: 1200,
-                height: 630,
-                alt: 'Selah — Terapia Online Profesional',
-            },
-        ],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Selah | Terapia Online Profesional',
-        description: 'Psicología y terapia online en Huehuetenango, Guatemala.',
-        images: ['/opengraph-image'],
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            'max-image-preview': 'large',
-        },
-    },
+  },
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'MedicalClinic',
-        'name': 'Selah',
-        'alternateName': 'Clínica de Psicología Selah',
-        'url': BASE_URL,
-        'logo': `${BASE_URL}/images/selah-logo.png`,
-        'image': `${BASE_URL}/opengraph-image`,
-        'description': 'Clínica de psicología especializada en terapia online y presencial en Huehuetenango.',
-        'address': {
-            '@type': 'PostalAddress',
-            'streetAddress': 'Huehuetenango',
-            'addressLocality': 'Huehuetenango',
-            'addressRegion': 'Huehuetenango',
-            'addressCountry': 'GT',
-        },
-        'geo': {
-            '@type': 'GeoCoordinates',
-            'latitude': 15.3147,
-            'longitude': -91.4762,
-        },
-        'telephone': '+502 51455816',
-        'openingHoursSpecification': [
-            {
-                '@type': 'OpeningHoursSpecification',
-                'dayOfWeek': [
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday'
-                ],
-                'opens': '08:00',
-                'closes': '18:00'
-            }
-        ],
-        'sameAs': [
-            'https://www.facebook.com/saludmental',
-            'https://www.instagram.com/saludmental'
-        ]
-    };
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${BASE_URL}/#organization`,
+    name: 'Selah Psicología',
+    alternateName: 'Selah Psicología y Crecimiento Interior',
+    url: BASE_URL,
+    logo: `${BASE_URL}/images/selah-logo.png`,
+    image: `${BASE_URL}/opengraph-image`,
+    description: siteConfig.description,
+    telephone: '+502 51455816',
+    email: siteConfig.contact.email,
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Guatemala',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Huehuetenango',
+      },
+    ],
+    serviceType: [
+      'Terapia psicológica online',
+      'Terapia psicológica presencial en Huehuetenango',
+      'Talleres, conferencias y charlas presenciales en Huehuetenango',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Huehuetenango',
+      addressRegion: 'Huehuetenango',
+      addressCountry: 'GT',
+    },
+    sameAs: [siteConfig.links.facebook],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+502 51455816',
+      contactType: 'customer service',
+      availableLanguage: 'Spanish',
+      areaServed: 'GT',
+    },
+  };
 
-    return (
-        <html lang="es" className="scroll-smooth">
-            <head>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                />
-            </head>
-            <body className={inter.className} suppressHydrationWarning>
-                <Navbar />
-                <main id="main-content" aria-label="Contenido principal">{children}</main>
-                <Footer />
-                <WhatsAppFloat />
-                <ClientChatWidget />
-            </body>
-        </html>
-    );
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
+    url: BASE_URL,
+    name: 'Selah Psicología',
+    inLanguage: 'es-GT',
+    publisher: {
+      '@id': `${BASE_URL}/#organization`,
+    },
+  };
+
+  return (
+    <html lang="es-GT" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+      </head>
+      <body className="antialiased" suppressHydrationWarning>
+        <Navbar />
+        <div id="main-content">{children}</div>
+        <Footer />
+        <WhatsAppFloat />
+        <ClientChatWidget />
+      </body>
+    </html>
+  );
 }
