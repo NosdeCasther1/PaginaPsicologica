@@ -15,8 +15,8 @@ export default function AboutSection() {
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
         <div className="relative min-h-[480px] overflow-hidden bg-sky-50 lg:min-h-[620px]">
           <Image
-            src="/images/team-image.jpg"
-            alt="Espacio profesional para acompañamiento psicológico"
+            src="/images/hero-image.jpg"
+            alt="Mujer en sesión de terapia psicológica online desde la comodidad de su hogar"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 46vw"

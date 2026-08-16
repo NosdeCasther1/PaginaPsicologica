@@ -26,7 +26,7 @@ export default function HeroSection() {
             aria-hidden="true"
           />
           <div
-            className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/45 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(to_top,rgb(255,255,255)_0%,rgba(255,255,255,0.94)_11%,rgba(255,255,255,0.78)_26%,rgba(255,255,255,0.5)_46%,rgba(255,255,255,0.22)_69%,rgba(255,255,255,0)_100%)]"
             aria-hidden="true"
           />
         </div>
@@ -83,7 +83,7 @@ export default function HeroSection() {
             className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white to-transparent"
             aria-hidden="true"
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 to-transparent px-6 pb-7 pt-28 text-white">
+          <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgba(2,6,23,0.88)_0%,rgba(2,6,23,0.74)_16%,rgba(2,6,23,0.5)_37%,rgba(2,6,23,0.27)_58%,rgba(2,6,23,0.1)_79%,rgba(2,6,23,0)_100%)] px-6 pb-7 pt-36 text-white">
             <p className="font-serif text-2xl">Un espacio seguro para comprenderte.</p>
             <p className="mt-2 max-w-md text-sm leading-6 text-slate-200">
               Online en toda Guatemala y presencial exclusivamente en
