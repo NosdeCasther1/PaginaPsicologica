@@ -197,7 +197,7 @@ export default async function ServicePage({ params }: Props) {
               <p className="mt-4 font-serif text-2xl text-slate-900">
                 {service.deliveryMode === 'in-person'
                   ? 'Actividad presencial en Huehuetenango'
-                  : 'Online en toda Guatemala · Presencial en Huehuetenango'}
+                  : 'Terapia online en toda Guatemala · Presencial en Huehuetenango'}
               </p>
               <p className="mt-3 leading-7 text-slate-600">
                 {service.deliveryMode === 'in-person'

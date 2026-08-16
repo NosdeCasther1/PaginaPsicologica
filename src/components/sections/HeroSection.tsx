@@ -34,7 +34,7 @@ export default function HeroSection() {
         <div className="relative z-10 flex min-h-[760px] items-center px-6 py-16 sm:py-20 lg:w-[58%] lg:py-24 lg:pr-12">
           <div className="max-w-2xl">
             <p className="premium-kicker">
-              Online en toda Guatemala · Presencial en Huehuetenango
+              Terapia online en toda Guatemala · Presencial en Huehuetenango
             </p>
             <h1 className="premium-title mt-6 text-5xl sm:text-6xl lg:text-7xl">
               Claridad, equilibrio y bienestar emocional.
@@ -63,8 +63,8 @@ export default function HeroSection() {
             <div className="mt-10 flex items-start gap-3 border-t border-slate-200 pt-6">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" aria-hidden="true" />
               <p className="text-sm leading-6 text-slate-600">
-                Online en toda Guatemala · Presencial solo en Huehuetenango ·
-                Sesiones privadas
+                Terapia online en toda Guatemala · Presencial solo en
+                Huehuetenango · Sesiones privadas
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function HeroSection() {
           <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgba(2,6,23,0.88)_0%,rgba(2,6,23,0.74)_16%,rgba(2,6,23,0.5)_37%,rgba(2,6,23,0.27)_58%,rgba(2,6,23,0.1)_79%,rgba(2,6,23,0)_100%)] px-6 pb-7 pt-36 text-white">
             <p className="font-serif text-2xl">Un espacio seguro para comprenderte.</p>
             <p className="mt-2 max-w-md text-sm leading-6 text-slate-200">
-              Online en toda Guatemala y presencial exclusivamente en
+              Terapia online en toda Guatemala y presencial exclusivamente en
               Huehuetenango.
             </p>
           </div>
