@@ -42,10 +42,6 @@ export const metadata: Metadata = {
   creator: 'Selah Psicología',
   publisher: 'Selah Psicología',
   category: 'Salud mental',
-  icons: {
-    icon: '/images/selah-logo.png',
-    apple: '/images/selah-logo.png',
-  },
   alternates: {
     canonical: BASE_URL,
   },
