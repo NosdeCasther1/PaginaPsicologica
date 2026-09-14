@@ -1,39 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Selah — Psicología Clínica
 
-## Getting Started
+Sitio web de Selah, consulta de psicología clínica que atiende **terapia online en toda Guatemala
+y presencial en Huehuetenango**. Además de las páginas informativas, el sitio resuelve el paso que
+de verdad importa para la consulta: que una persona pase de leer a tener una cita agendada.
 
-First, run the development server:
+Construido con **Next.js 16** (App Router), **React 19**, **TypeScript** y **Tailwind CSS 4**.
+
+## Qué incluye
+
+| Área | Detalle |
+|---|---|
+| **Contenido** | Servicios por especialidad, artículos, recursos, charlas y las páginas legales (términos, privacidad, confidencialidad) |
+| **Agenda** | Disponibilidad real consultada contra Google Calendar y redirección al calendario público de citas |
+| **Luz** | Asistente conversacional sobre Gemini que responde dudas frecuentes y ayuda a agendar |
+| **WhatsApp** | Webhook de WhatsApp Business Cloud API que reutiliza la misma lógica de Luz |
+| **Correo** | Aviso de solicitudes de cita por SMTP |
+| **SEO** | Metadatos, Open Graph, `sitemap.ts` y `robots.ts`, más un script de auditoría |
+| **Imágenes** | Optimización a WebP en cada build con `sharp` |
+
+### Las reglas de Luz
+
+Luz está acotada a propósito, porque es un contexto de salud mental:
+
+- **No diagnostica** ni sugiere tratamientos.
+- **No inventa horarios**: cuando no puede confirmar disponibilidad real, redirige al calendario
+  público en lugar de improvisar una hora.
+- Consulta Google Calendar cuando está configurado.
+
+El chat web (`src/lib/luz.ts`) y el webhook de WhatsApp comparten esa misma lógica, de modo que las
+respuestas no pueden divergir entre un canal y otro.
+
+## Puesta en marcha
 
 ```bash
+npm install
+cp .env.example .env.local   # si no existe, crea .env.local con las variables de abajo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | Para qué |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Optimiza imágenes y compila para producción |
+| `npm start` | Sirve la compilación de producción |
+| `npm run lint` | ESLint |
+| `npm run optimize-images` | Convierte las imágenes a WebP |
+| `npm run audit:seo` | Auditoría de SEO sobre el sitio |
 
-## Learn More
+## Variables de entorno
 
-To learn more about Next.js, take a look at the following resources:
+Ninguna credencial va en el repositorio: todas se configuran en Vercel (Production y Preview) o en
+`.env.local` para desarrollo.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Sitio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Para qué |
+|---|---|
+| `NEXT_PUBLIC_BASE_URL` | URL canónica. Alimenta sitemap, robots, Open Graph y JSON-LD |
+| `NEXT_PUBLIC_GOOGLE_APPOINTMENT_URL` | Calendario público de citas de Google |
+| `CONTACT_EMAIL` | Destino de las solicitudes de cita |
 
-## Deploy on Vercel
+### Google Calendar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable | Para qué |
+|---|---|
+| `GOOGLE_CALENDAR_ID` | Calendario contra el que se consulta disponibilidad |
+| `GOOGLE_SERVICE_ACCOUNT_EMAIL` | Cuenta de servicio con acceso al calendario |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | Llave privada de esa cuenta (o `GOOGLE_SERVICE_ACCOUNT_KEY_FILE` en local) |
+| `GOOGLE_CALENDAR_TIME_ZONE` | Zona horaria. Por defecto `America/Guatemala` |
+| `GOOGLE_CALENDAR_UTC_OFFSET` | Desfase UTC de respaldo |
+| `APPOINTMENT_SLOT_MINUTES` | Duración de cada espacio |
+| `APPOINTMENT_WORKDAY_START` / `APPOINTMENT_WORKDAY_END` | Horario de atención |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Luz
+
+| Variable | Para qué |
+|---|---|
+| `GOOGLE_GENERATIVE_AI_MODEL` | Modelo de Gemini que responde |
+
+### Correo
+
+`SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`.
+
+### WhatsApp
+
+Ver la sección siguiente.
 
 ## WhatsApp Business Cloud API (Meta)
 
